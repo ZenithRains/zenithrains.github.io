@@ -367,6 +367,10 @@ video {
   fill: currentColor;
 }
 
+.profile-icon-link .icon-xiaohongshu {
+  width: 34px;
+}
+
 .profile-icon-link .icon-stroke {
   fill: none;
   stroke: currentColor;
