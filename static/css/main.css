@@ -451,6 +451,12 @@ video {
   letter-spacing: 0.025em;
 }
 
+.meta-series,
+.series-line a {
+  color: inherit;
+  text-decoration-color: var(--line);
+}
+
 .article-card .article-meta {
   grid-row: span 3;
   padding-top: 7px;

@@ -10,7 +10,10 @@
       <h1>{{ .Title }}</h1>
       {{ with .Description }}<p class="article-deck">{{ . }}</p>{{ end }}
       {{ with .Params.series }}
-        <div class="series-line">{{ if eq $.Lang "zh" }}专栏{{ else }}Series{{ end }}: {{ delimit . ", " }}</div>
+        <div class="series-line">
+          {{ if eq $.Lang "zh" }}专栏{{ else }}Series{{ end }}:
+          {{ range $index, $series := . }}{{ if $index }}, {{ end }}<a href="{{ printf "/series/%s/" ($series | urlize) | relLangURL }}">{{ $series }}</a>{{ end }}
+        </div>
       {{ end }}
     </header>
 
