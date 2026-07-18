@@ -3,6 +3,10 @@
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#f7f6f2" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#151415" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="{{ "/favicon.ico" | relURL }}" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ "/favicon-32x32.png" | relURL }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ "/favicon-16x16.png" | relURL }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ "/apple-touch-icon.png" | relURL }}">
 {{ $description := .Description | default .Summary | default .Site.Params.description }}
 <meta name="description" content="{{ $description | plainify }}">
 <meta name="author" content="{{ .Site.Params.authorName }}">
@@ -26,6 +30,10 @@
   })();
 </script>
 <link rel="stylesheet" href="{{ "vendor/katex/katex.min.css" | relURL }}">
+{{ if eq .Lang "zh" }}
+  <link rel="stylesheet" href="{{ "fonts/noto-sans-sc/index.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "fonts/noto-serif-sc/index.css" | relURL }}">
+{{ end }}
 <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
 <script defer src="{{ "vendor/katex/katex.min.js" | relURL }}"></script>
 <script defer src="{{ "vendor/katex/contrib/auto-render.min.js" | relURL }}"></script>

@@ -14,6 +14,14 @@
   src: url("/fonts/source-sans-3-latin-wght-italic.woff2") format("woff2-variations");
 }
 
+@font-face {
+  font-family: "Source Serif 4";
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("/fonts/source-serif-4/source-serif-4-latin-opsz-normal.woff2") format("woff2-variations");
+}
+
 :root {
   --bg: #f7f6f2;
   --surface: #ffffff;
@@ -29,7 +37,9 @@
   --home: 860px;
   --narrow: 760px;
   --sans: "Source Sans 3", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Arial, sans-serif;
-  --cjk: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", var(--sans);
+  --serif: "Source Serif 4", ui-serif, Georgia, "Times New Roman", serif;
+  --cjk-sans: "Source Sans 3", "Noto Sans SC Variable", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --cjk-serif: "Source Serif 4", "Noto Serif SC Variable", "Songti SC", "STSong", serif;
 }
 
 :root[data-theme="dark"] {
@@ -52,6 +62,8 @@
 html {
   scroll-behavior: smooth;
   background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -62,14 +74,31 @@ body {
   font-family: var(--sans);
   font-size: 17px;
   line-height: 1.62;
+  font-optical-sizing: auto;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   transition: background-color 180ms ease, color 180ms ease;
 }
 
-:lang(zh) body,
-:lang(zh-CN) {
-  font-family: var(--cjk);
+html:lang(zh-CN) body {
+  font-family: var(--cjk-sans);
+  font-size: 16.5px;
+  line-height: 1.72;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--serif);
+  font-optical-sizing: auto;
+}
+
+html:lang(zh-CN) h1,
+html:lang(zh-CN) h2,
+html:lang(zh-CN) h3,
+html:lang(zh-CN) h4 {
+  font-family: var(--cjk-serif);
 }
 
 a {
@@ -183,8 +212,8 @@ video {
 .site-nav {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: clamp(18px, 2.4vw, 34px);
+  justify-content: flex-start;
+  gap: clamp(18px, 2.2vw, 28px);
 }
 
 .site-nav a,
@@ -314,14 +343,45 @@ video {
 }
 
 .profile-links {
-  margin-top: 17px;
+  margin-top: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 8px;
 }
 
-.profile-links a,
+.profile-icon-link {
+  width: 40px;
+  height: 40px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 150ms ease, background-color 150ms ease, transform 150ms ease;
+}
+
+.profile-icon-link svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+}
+
+.profile-icon-link .icon-stroke {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.profile-icon-link:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
 .profile-actions a {
   color: var(--accent);
   font-size: 14px;
@@ -329,7 +389,6 @@ video {
   text-decoration: none;
 }
 
-.profile-links a:hover,
 .profile-actions a:hover {
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -349,9 +408,15 @@ video {
 .profile-copy h1 {
   margin: 0;
   font-size: clamp(40px, 5.2vw, 48px);
-  font-weight: 620;
-  letter-spacing: -0.035em;
+  font-weight: 600;
+  letter-spacing: -0.022em;
   line-height: 1.08;
+}
+
+html:lang(zh-CN) .profile-copy h1 {
+  font-size: clamp(39px, 4.8vw, 44px);
+  font-weight: 600;
+  letter-spacing: 0.015em;
 }
 
 .profile-intro {
@@ -360,6 +425,11 @@ video {
   color: var(--muted);
   font-size: 18px;
   line-height: 1.62;
+}
+
+html:lang(zh-CN) .profile-intro {
+  font-size: 17px;
+  line-height: 1.76;
 }
 
 .profile-intro p {
@@ -441,8 +511,8 @@ video {
 .map-heading h2 {
   margin: 0;
   font-size: clamp(25px, 3vw, 31px);
-  font-weight: 620;
-  letter-spacing: -0.025em;
+  font-weight: 600;
+  letter-spacing: -0.015em;
 }
 
 .section-heading > a {
@@ -506,9 +576,15 @@ video {
   max-width: 900px;
   margin: 0;
   font-size: clamp(40px, 5.5vw, 58px);
-  font-weight: 620;
-  letter-spacing: -0.035em;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   line-height: 1.06;
+}
+
+html:lang(zh-CN) .page-header h1,
+html:lang(zh-CN) .article-header h1,
+html:lang(zh-CN) .not-found h1 {
+  letter-spacing: 0.015em;
 }
 
 .page-description,
@@ -569,8 +645,8 @@ video {
 .article-card h2 {
   margin: 0;
   font-size: clamp(22px, 3vw, 31px);
-  font-weight: 680;
-  letter-spacing: -0.035em;
+  font-weight: 600;
+  letter-spacing: -0.018em;
   line-height: 1.22;
 }
 
@@ -656,7 +732,8 @@ video {
 .prose h4 {
   margin-top: 2.2em;
   margin-bottom: 0.75em;
-  letter-spacing: -0.03em;
+  font-weight: 600;
+  letter-spacing: -0.015em;
   line-height: 1.25;
 }
 
@@ -825,8 +902,20 @@ video {
   max-width: 800px;
   margin: 0;
   font-size: clamp(20px, 2.7vw, 28px);
-  letter-spacing: -0.025em;
+  font-weight: 600;
+  letter-spacing: -0.015em;
   line-height: 1.27;
+}
+
+html:lang(zh-CN) .section-heading h2,
+html:lang(zh-CN) .map-heading h2,
+html:lang(zh-CN) .home-publication-list h3,
+html:lang(zh-CN) .article-card h2,
+html:lang(zh-CN) .publication h2,
+html:lang(zh-CN) .prose h2,
+html:lang(zh-CN) .prose h3,
+html:lang(zh-CN) .prose h4 {
+  letter-spacing: 0;
 }
 
 .publication-authors,
@@ -1071,10 +1160,13 @@ video {
     right: 0;
     display: none;
     align-items: stretch;
-    padding: 18px 20px 24px;
+    justify-content: stretch;
+    gap: 0;
+    padding: 12px 20px 16px;
     border-bottom: 1px solid var(--line);
     background: var(--bg);
     box-shadow: var(--shadow);
+    text-align: left;
   }
 
   .site-nav.is-open {
@@ -1082,8 +1174,13 @@ video {
   }
 
   .site-nav a {
-    padding: 9px 0;
+    width: 100%;
+    padding: 11px 0;
     font-size: 15px;
+  }
+
+  .site-nav a + a {
+    border-top: 1px solid var(--line);
   }
 
   .site-nav a[aria-current="page"] {
@@ -1143,6 +1240,10 @@ video {
     font-size: clamp(39px, 11vw, 46px);
   }
 
+  html:lang(zh-CN) .profile-copy h1 {
+    font-size: clamp(37px, 10vw, 42px);
+  }
+
   .profile-intro {
     max-width: 560px;
     margin-inline: auto;
@@ -1168,6 +1269,7 @@ video {
 
   .site-nav {
     top: 66px;
+    padding-inline: 14px;
   }
 
   .site-mark {
@@ -1193,6 +1295,10 @@ video {
 
   .profile-copy h1 {
     font-size: 40px;
+  }
+
+  html:lang(zh-CN) .profile-copy h1 {
+    font-size: 38px;
   }
 
   .profile-intro {

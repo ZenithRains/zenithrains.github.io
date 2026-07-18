@@ -20,7 +20,9 @@ permalinks:
 
 params:
   authorName: Ruiyi Zhang
+  email: ruiyizhang@buaa.edu.cn
   github: https://github.com/ZenithRains
+  zhihu: https://www.zhihu.com/people/ZRainY
   description: "Personal website of Ruiyi Zhang: research, writing, and projects."
   mainSections:
     - blog
