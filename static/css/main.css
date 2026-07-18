@@ -23,16 +23,16 @@
 }
 
 :root {
-  --bg: #f7f6f2;
+  --bg: #ffffff;
   --surface: #ffffff;
   --ink: #302f2c;
   --muted: #716f69;
-  --line: #dedbd4;
-  --soft: #ece9e3;
+  --line: #e2e2e2;
+  --soft: #f3f3f3;
   --accent: #5e4b72;
   --accent-soft: #ede8f1;
   --inverse: #ffffff;
-  --shadow: 0 14px 42px rgba(49, 43, 39, 0.09);
+  --shadow: 0 14px 42px rgba(35, 35, 35, 0.09);
   --content: 960px;
   --home: 860px;
   --narrow: 760px;
@@ -575,10 +575,10 @@ html:lang(zh-CN) .profile-intro {
 .not-found h1 {
   max-width: 900px;
   margin: 0;
-  font-size: clamp(40px, 5.5vw, 58px);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.06;
+  font-size: clamp(40px, 5.2vw, 54px);
+  font-weight: 550;
+  letter-spacing: -0.012em;
+  line-height: 1.1;
 }
 
 html:lang(zh-CN) .page-header h1,
