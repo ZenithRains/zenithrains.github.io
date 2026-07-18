@@ -299,7 +299,8 @@ video {
 
 .profile-photo {
   width: 220px;
-  aspect-ratio: 1;
+  height: auto;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   object-position: 50% 50%;
   border: 1px solid var(--line);
