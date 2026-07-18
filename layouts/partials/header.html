@@ -1,8 +1,7 @@
 <header class="site-header">
   <div class="header-inner">
-    <a class="site-mark" href="{{ .Site.Home.RelPermalink }}" aria-label="{{ .Site.Title }}">
-      <span class="mark-latin">RZ</span>
-      <span class="mark-chinese">张</span>
+    <a class="site-mark" href="{{ .Site.Home.RelPermalink }}" aria-label="{{ if eq .Lang "zh" }}返回张睿溢的主页{{ else }}Return to Ruiyi Zhang's homepage{{ end }}">
+      <img src="{{ "/images/avatar-cartoon.jpg" | relURL }}" alt="" width="44" height="44">
     </a>
 
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">

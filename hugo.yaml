@@ -1,5 +1,5 @@
 baseURL: https://zenithrains.github.io/
-title: Ruiyi Zhang · 张睿溢
+title: Ruiyi Zhang
 copyright: © Ruiyi Zhang
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: false
@@ -19,10 +19,9 @@ permalinks:
   essays: /essays/:year/:month/:slug/
 
 params:
-  authorLatin: Ruiyi Zhang
-  authorChinese: 张睿溢
+  authorName: Ruiyi Zhang
   github: https://github.com/ZenithRains
-  description: "Personal website of Ruiyi Zhang (张睿溢): research, writing, and projects."
+  description: "Personal website of Ruiyi Zhang: research, writing, and projects."
   mainSections:
     - blog
     - essays
@@ -34,8 +33,9 @@ languages:
     contentDir: content/en
     weight: 1
     params:
+      authorName: Ruiyi Zhang
       localeName: English
-      description: "Personal website of Ruiyi Zhang (张睿溢): research, writing, and projects."
+      description: "Personal website of Ruiyi Zhang: research, writing, and projects."
     menus:
       main:
         - name: About
@@ -60,11 +60,12 @@ languages:
     locale: zh-CN
     label: 中文
     contentDir: content/zh
-    title: 张睿溢 · Ruiyi Zhang
+    title: 张睿溢
     weight: 2
     params:
+      authorName: 张睿溢
       localeName: 中文
-      description: "张睿溢（Ruiyi Zhang）的个人网站：研究、写作与项目。"
+      description: "张睿溢的个人网站：研究、写作与项目。"
     menus:
       main:
         - name: 关于

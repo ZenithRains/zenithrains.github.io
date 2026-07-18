@@ -3,6 +3,6 @@ title: Home
 translationKey: home
 ---
 
-I am **Ruiyi Zhang (张睿溢)**. This website is a home for my research, writing, projects, and notes.
+This website brings together my academic work, ongoing projects, and writing.
 
-More biographical information will be added here soon.
+You can find my publications and curriculum vitae here, alongside longer-form essays and shorter notes.

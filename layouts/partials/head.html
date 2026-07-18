@@ -1,16 +1,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#f7f7f4" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7f6f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151415" media="(prefers-color-scheme: dark)">
 {{ $description := .Description | default .Summary | default .Site.Params.description }}
 <meta name="description" content="{{ $description | plainify }}">
-<meta name="author" content="{{ .Site.Params.authorLatin }}">
+<meta name="author" content="{{ .Site.Params.authorName }}">
 <link rel="canonical" href="{{ .Permalink }}">
 {{ range .AllTranslations }}
   <link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ .Permalink }}">
 {{ end }}
-<link rel="alternate" hreflang="x-default" href="{{ .Site.Home.Permalink }}">
+{{ $defaultHome := .Site.Home.Permalink }}
+{{ range hugo.Sites }}
+  {{ if eq .Language.Lang "en" }}{{ $defaultHome = .Home.Permalink }}{{ end }}
+{{ end }}
+<link rel="alternate" hreflang="x-default" href="{{ $defaultHome }}">
 {{ with .OutputFormats.Get "rss" }}
   <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .RelPermalink }}">
 {{ end }}
@@ -29,5 +33,5 @@
 {{ if .IsHome }}
   <title>{{ .Site.Title }}</title>
 {{ else }}
-  <title>{{ .Title }} · {{ .Site.Params.authorLatin }}</title>
+  <title>{{ .Title }} · {{ .Site.Params.authorName }}</title>
 {{ end }}

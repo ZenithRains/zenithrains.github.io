@@ -1,28 +1,62 @@
 {{ define "main" }}
-  <section class="hero shell">
-    <div class="hero-kicker">{{ if eq .Lang "zh" }}研究 · 写作 · 项目{{ else }}Research · Writing · Projects{{ end }}</div>
-    <h1>
-      <span>{{ .Site.Params.authorLatin }}</span>
-      <span class="hero-name-zh" lang="zh-CN">{{ .Site.Params.authorChinese }}</span>
-    </h1>
-    <div class="hero-intro prose">{{ .Content }}</div>
-    <div class="hero-actions">
-      <a class="button button-primary" href="{{ "/publications/" | relLangURL }}">{{ if eq .Lang "zh" }}学术成果{{ else }}Publications{{ end }}</a>
-      <a class="button" href="{{ "/cv/" | relLangURL }}">CV</a>
-      <a class="text-link" href="{{ .Site.Params.github }}" rel="me">GitHub <span aria-hidden="true">↗</span></a>
+  <section class="profile-hero shell-home">
+    <div class="profile-grid">
+      <div class="profile-portrait">
+        <img
+          class="profile-photo"
+          src="{{ "/images/ruiyi-photo.jpg" | relURL }}"
+          alt="{{ if eq .Lang "zh" }}张睿溢的照片{{ else }}Portrait of Ruiyi Zhang{{ end }}"
+          width="220"
+          height="220"
+          decoding="async"
+          fetchpriority="high">
+        <div class="profile-links" aria-label="{{ if eq .Lang "zh" }}个人链接{{ else }}Profile links{{ end }}">
+          <a href="{{ .Site.Params.github }}" rel="me">GitHub <span aria-hidden="true">↗</span></a>
+          <a href="{{ "/cv/" | relLangURL }}">CV <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <div class="profile-copy">
+        <p class="profile-kicker">{{ if eq .Lang "zh" }}研究 · 写作 · 随笔{{ else }}Research · Writing · Notes{{ end }}</p>
+        <h1>{{ .Site.Params.authorName }}</h1>
+        <div class="profile-intro prose">{{ .Content }}</div>
+        <nav class="profile-actions" aria-label="{{ if eq .Lang "zh" }}主页入口{{ else }}Homepage links{{ end }}">
+          <a href="{{ "/about/" | relLangURL }}">{{ if eq .Lang "zh" }}个人简介{{ else }}About me{{ end }} <span aria-hidden="true">→</span></a>
+          <a href="{{ "/publications/" | relLangURL }}">{{ if eq .Lang "zh" }}学术成果{{ else }}Publications{{ end }} <span aria-hidden="true">→</span></a>
+        </nav>
+      </div>
     </div>
   </section>
+
+  {{ $publications := hugo.Data.publications.publications }}
+  {{ if $publications }}
+    <section class="home-section shell-home">
+      <div class="section-heading">
+        <h2>{{ if eq .Lang "zh" }}部分学术成果{{ else }}Selected work{{ end }}</h2>
+        <a href="{{ "/publications/" | relLangURL }}">{{ if eq .Lang "zh" }}查看全部{{ else }}View all{{ end }} <span aria-hidden="true">→</span></a>
+      </div>
+      <ol class="home-publication-list">
+        {{ range first 3 (sort $publications "year" "desc") }}
+          <li>
+            <span>{{ .year }}</span>
+            <div>
+              <h3>{{ .title }}</h3>
+              <p>{{ .venue }}</p>
+            </div>
+          </li>
+        {{ end }}
+      </ol>
+    </section>
+  {{ end }}
 
   {{ $writing := where .Site.RegularPages "Section" "in" .Site.Params.mainSections }}
-  <section class="home-section shell">
-    <div class="section-heading">
-      <h2>{{ if eq .Lang "zh" }}最近写作{{ else }}Recent writing{{ end }}</h2>
-      <a href="{{ "/blog/" | relLangURL }}">{{ if eq .Lang "zh" }}查看全部{{ else }}View all{{ end }} <span aria-hidden="true">→</span></a>
-    </div>
-    {{ partial "article-list.html" (dict "pages" (first 4 $writing.ByDate.Reverse) "lang" .Lang) }}
-  </section>
-
-  <section class="home-section home-note shell">
-    <p>{{ if eq .Lang "zh" }}本站是纯静态网站，不使用第三方分析或追踪服务。{{ else }}This is a static website with no third-party analytics or tracking.{{ end }}</p>
-  </section>
+  {{ if $writing }}
+    <section class="home-section shell-home">
+      <div class="section-heading">
+        <h2>{{ if eq .Lang "zh" }}最近写作{{ else }}Recent writing{{ end }}</h2>
+        <a href="{{ "/blog/" | relLangURL }}">{{ if eq .Lang "zh" }}查看全部{{ else }}View all{{ end }} <span aria-hidden="true">→</span></a>
+      </div>
+      {{ partial "article-list.html" (dict "pages" (first 4 $writing.ByDate.Reverse) "lang" .Lang) }}
+    </section>
+  {{ end }}
 {{ end }}
