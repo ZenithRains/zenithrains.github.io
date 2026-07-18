@@ -1,0 +1,9 @@
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p>© {{ now.Year }} Ruiyi Zhang · 张睿溢</p>
+    <div class="footer-links">
+      <a href="{{ .Site.Params.github }}" rel="me">GitHub</a>
+      {{ with .Site.Home.OutputFormats.Get "RSS" }}<a href="{{ .RelPermalink }}">RSS</a>{{ end }}
+    </div>
+  </div>
+</footer>

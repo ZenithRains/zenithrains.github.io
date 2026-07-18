@@ -1,0 +1,10 @@
+{{ define "main" }}
+  <header class="page-header shell">
+    <p class="eyebrow">{{ if eq .Lang "zh" }}标签{{ else }}Tagged{{ end }}</p>
+    <h1>{{ .Title }}</h1>
+    <p class="page-lead">{{ len .Pages }} {{ if eq .Lang "zh" }}篇内容{{ else }}items{{ end }}</p>
+  </header>
+  <section class="shell content-section">
+    {{ partial "article-list.html" (dict "pages" .Paginator.Pages "lang" .Lang) }}
+  </section>
+{{ end }}

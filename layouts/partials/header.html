@@ -1,0 +1,36 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-mark" href="{{ .Site.Home.RelPermalink }}" aria-label="{{ .Site.Title }}">
+      <span class="mark-latin">RZ</span>
+      <span class="mark-chinese">张</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="sr-only">{{ if eq .Lang "zh" }}打开导航{{ else }}Open navigation{{ end }}</span>
+      <span></span><span></span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="{{ if eq .Lang "zh" }}主导航{{ else }}Primary navigation{{ end }}">
+      {{ range .Site.Menus.main }}
+        <a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{ end }}
+    </nav>
+
+    <div class="header-actions">
+      {{ $currentPage := . }}
+      {{ range hugo.Sites }}
+        {{ if ne .Language.Name $currentPage.Language.Name }}
+          {{ $otherLanguage := .Language }}
+          {{ $target := .Home.RelPermalink }}
+          {{ range where $currentPage.Translations "Language.Name" $otherLanguage.Name }}
+            {{ $target = .RelPermalink }}
+          {{ end }}
+          <a class="language-link" href="{{ $target }}" lang="{{ $otherLanguage.Name }}">{{ $otherLanguage.Label }}</a>
+        {{ end }}
+      {{ end }}
+      <button class="theme-toggle" type="button" aria-label="{{ if eq .Lang "zh" }}切换黑白主题{{ else }}Toggle black and white theme{{ end }}" title="{{ if eq .Lang "zh" }}切换黑白主题{{ else }}Toggle theme{{ end }}">
+        <span class="theme-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>

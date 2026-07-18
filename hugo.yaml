@@ -1,0 +1,123 @@
+baseURL: https://zenithrains.github.io/
+title: Ruiyi Zhang · 张睿溢
+copyright: © Ruiyi Zhang
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: false
+enableRobotsTXT: true
+hasCJKLanguage: true
+timeZone: Asia/Shanghai
+
+pagination:
+  pagerSize: 8
+
+taxonomies:
+  tag: tags
+  series: series
+
+permalinks:
+  blog: /blog/:year/:month/:slug/
+  essays: /essays/:year/:month/:slug/
+
+params:
+  authorLatin: Ruiyi Zhang
+  authorChinese: 张睿溢
+  github: https://github.com/ZenithRains
+  description: "Personal website of Ruiyi Zhang (张睿溢): research, writing, and projects."
+  mainSections:
+    - blog
+    - essays
+
+languages:
+  en:
+    locale: en-US
+    label: English
+    contentDir: content/en
+    weight: 1
+    params:
+      localeName: English
+      description: "Personal website of Ruiyi Zhang (张睿溢): research, writing, and projects."
+    menus:
+      main:
+        - name: About
+          pageRef: /about
+          weight: 10
+        - name: Publications
+          pageRef: /publications
+          weight: 20
+        - name: Blog
+          pageRef: /blog
+          weight: 30
+        - name: Essays
+          pageRef: /essays
+          weight: 40
+        - name: Tags
+          pageRef: /tags
+          weight: 50
+        - name: CV
+          pageRef: /cv
+          weight: 60
+  zh:
+    locale: zh-CN
+    label: 中文
+    contentDir: content/zh
+    title: 张睿溢 · Ruiyi Zhang
+    weight: 2
+    params:
+      localeName: 中文
+      description: "张睿溢（Ruiyi Zhang）的个人网站：研究、写作与项目。"
+    menus:
+      main:
+        - name: 关于
+          pageRef: /about
+          weight: 10
+        - name: 学术成果
+          pageRef: /publications
+          weight: 20
+        - name: 博客
+          pageRef: /blog
+          weight: 30
+        - name: 随笔
+          pageRef: /essays
+          weight: 40
+        - name: 标签
+          pageRef: /tags
+          weight: 50
+        - name: 简历
+          pageRef: /cv
+          weight: 60
+
+markup:
+  goldmark:
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          block:
+            - ["\\[", "\\]"]
+            - ["$$", "$$"]
+          inline:
+            - ["\\(", "\\)"]
+            - ["$", "$"]
+    parser:
+      attribute:
+        block: true
+        title: true
+    renderer:
+      unsafe: true
+
+minify:
+  minifyOutput: true
+
+privacy:
+  disqus:
+    disable: true
+  googleAnalytics:
+    disable: true
+  instagram:
+    disable: true
+  x:
+    disable: true
+  vimeo:
+    disable: true
+  youtube:
+    disable: true

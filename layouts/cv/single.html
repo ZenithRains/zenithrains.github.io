@@ -1,0 +1,20 @@
+{{ define "main" }}
+  <header class="page-header shell">
+    <p class="eyebrow">CV</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Content }}<div class="page-description prose">{{ . }}</div>{{ end }}
+  </header>
+  <section class="shell content-section">
+    {{ with .Params.pdf }}
+      <div class="pdf-actions">
+        <a class="button button-primary" href="{{ . | relURL }}" download>{{ if eq $.Lang "zh" }}下载 PDF{{ else }}Download PDF{{ end }}</a>
+        <a class="text-link" href="{{ . | relURL }}">{{ if eq $.Lang "zh" }}在新窗口打开{{ else }}Open in a new tab{{ end }} <span aria-hidden="true">↗</span></a>
+      </div>
+      <object class="pdf-viewer" data="{{ . | relURL }}#view=FitH" type="application/pdf">
+        <p>{{ if eq $.Lang "zh" }}浏览器无法内嵌显示此 PDF。{{ else }}This browser cannot display the PDF inline.{{ end }} <a href="{{ . | relURL }}">{{ if eq $.Lang "zh" }}下载文件{{ else }}Download it here{{ end }}</a>.</p>
+      </object>
+    {{ else }}
+      <div class="empty-state">{{ if eq $.Lang "zh" }}CV PDF 尚未添加。{{ else }}The CV PDF has not been added yet.{{ end }}</div>
+    {{ end }}
+  </section>
+{{ end }}

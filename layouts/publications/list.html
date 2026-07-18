@@ -1,0 +1,52 @@
+{{ define "main" }}
+  {{ $publications := hugo.Data.publications.publications }}
+  <header class="page-header shell">
+    <p class="eyebrow">{{ if eq .Lang "zh" }}研究{{ else }}Research{{ end }}</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Content }}<div class="page-description prose">{{ . }}</div>{{ end }}
+  </header>
+
+  <section class="shell content-section publications-section">
+    {{ if $publications }}
+      {{ $topics := slice }}
+      {{ range $publications }}{{ range .topics }}{{ $topics = $topics | append . }}{{ end }}{{ end }}
+      {{ $topics = uniq $topics | sort }}
+      <div class="publication-filters" aria-label="{{ if eq .Lang "zh" }}按主题筛选{{ else }}Filter by topic{{ end }}">
+        <button class="filter-button is-active" type="button" data-topic="all">{{ if eq .Lang "zh" }}全部{{ else }}All{{ end }}</button>
+        {{ range $topics }}<button class="filter-button" type="button" data-topic="{{ . | urlize }}">{{ . }}</button>{{ end }}
+      </div>
+
+      <ol class="publication-list">
+        {{ range sort $publications "year" "desc" }}
+          <li class="publication" data-topics="{{ delimit (apply .topics "urlize" ".") " " }}">
+            <article>
+              <div class="publication-year">{{ .year }}</div>
+              <div class="publication-main">
+                <h2>{{ .title }}</h2>
+                <p class="publication-authors">{{ .authors | markdownify }}</p>
+                <p class="publication-venue">{{ .venue }}{{ with .note }} <span>— {{ . }}</span>{{ end }}</p>
+                <div class="publication-links">
+                  {{ with .paper }}<a href="{{ . }}">PDF</a>{{ end }}
+                  {{ with .project }}<a href="{{ . }}">{{ if eq $.Lang "zh" }}项目{{ else }}Project{{ end }}</a>{{ end }}
+                  {{ with .code }}<a href="{{ . }}">Code</a>{{ end }}
+                  {{ with .data }}<a href="{{ . }}">Data</a>{{ end }}
+                  {{ with .bibtex }}
+                    <details class="bibtex-details">
+                      <summary>BibTeX</summary>
+                      <div class="bibtex-box">
+                        <pre><code>{{ . }}</code></pre>
+                        <button class="copy-bibtex" type="button">{{ if eq $.Lang "zh" }}复制{{ else }}Copy{{ end }}</button>
+                      </div>
+                    </details>
+                  {{ end }}
+                </div>
+              </div>
+            </article>
+          </li>
+        {{ end }}
+      </ol>
+    {{ else }}
+      <p class="empty-state">{{ if eq .Lang "zh" }}学术成果将在信息确认后添加。{{ else }}Academic work will be added after the details have been verified.{{ end }}</p>
+    {{ end }}
+  </section>
+{{ end }}

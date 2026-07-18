@@ -1,0 +1,40 @@
+{{ define "main" }}
+  <header class="page-header shell">
+    <p class="eyebrow">{{ if eq .Lang "zh" }}探索{{ else }}Explore{{ end }}</p>
+    <h1>{{ .Title }}</h1>
+    <p class="page-lead">{{ if eq .Lang "zh" }}通过词云和关系图探索文章关键词。节点大小表示出现频率，连线表示共同出现。{{ else }}Explore writing through a word cloud and relationship map. Node size shows frequency; links show co-occurrence.{{ end }}</p>
+  </header>
+
+  <section class="shell content-section taxonomy-explorer">
+    {{ if .Data.Terms }}
+      <div class="word-cloud" aria-label="{{ if eq .Lang "zh" }}词云{{ else }}Word cloud{{ end }}">
+        {{ range .Data.Terms.ByCount }}
+          <a href="{{ .Page.RelPermalink }}" data-count="{{ .Count }}">{{ .Page.LinkTitle }}<sup>{{ .Count }}</sup></a>
+        {{ end }}
+      </div>
+      <div class="map-heading">
+        <h2>{{ if eq .Lang "zh" }}关键词地图{{ else }}Keyword map{{ end }}</h2>
+        <p>{{ if eq .Lang "zh" }}拖动节点或选择关键词进行浏览。{{ else }}Drag a node or select a keyword to explore.{{ end }}</p>
+      </div>
+      <div class="keyword-map" id="keyword-map" role="img" aria-label="{{ if eq .Lang "zh" }}关键词关系图{{ else }}Keyword relationship map{{ end }}"></div>
+      <script type="application/json" id="keyword-data">
+        {
+          "nodes": [
+            {{ range $index, $term := .Data.Terms.ByCount }}{{ if $index }},{{ end }}{"name": {{ $term.Page.LinkTitle | jsonify | safeJS }}, "count": {{ $term.Count }}, "url": {{ $term.Page.RelPermalink | jsonify | safeJS }}}{{ end }}
+          ],
+          "groups": [
+            {{ $hasGroup := false }}
+            {{ range .Site.RegularPages }}
+              {{ with index .Params $.Data.Plural }}
+                {{ if $hasGroup }},{{ end }}{{ . | jsonify | safeJS }}{{ $hasGroup = true }}
+              {{ end }}
+            {{ end }}
+          ]
+        }
+      </script>
+      <script defer src="{{ "js/keyword-map.js" | relURL }}"></script>
+    {{ else }}
+      <p class="empty-state">{{ if eq .Lang "zh" }}发布带标签的文章后，词云和关键词地图会自动出现在这里。{{ else }}The word cloud and keyword map will appear after tagged writing is published.{{ end }}</p>
+    {{ end }}
+  </section>
+{{ end }}

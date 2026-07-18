@@ -1,0 +1,35 @@
+{{ define "main" }}
+  <article class="article-page shell-narrow">
+    <header class="article-header">
+      {{ if or (eq .Section "blog") (eq .Section "essays") }}
+        <div class="article-meta">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+          {{ with .ReadingTime }}<span class="meta-divider">/</span><span>{{ . }} {{ if eq $.Lang "zh" }}分钟阅读{{ else }}min read{{ end }}</span>{{ end }}
+        </div>
+      {{ end }}
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}<p class="article-deck">{{ . }}</p>{{ end }}
+      {{ with .Params.series }}
+        <div class="series-line">{{ if eq $.Lang "zh" }}专栏{{ else }}Series{{ end }}: {{ delimit . ", " }}</div>
+      {{ end }}
+    </header>
+
+    {{ if and .TableOfContents (gt (len .TableOfContents) 100) }}
+      <details class="toc">
+        <summary>{{ if eq .Lang "zh" }}目录{{ else }}On this page{{ end }}</summary>
+        {{ .TableOfContents }}
+      </details>
+    {{ end }}
+
+    <div class="article-body prose">{{ .Content }}</div>
+
+    {{ with .Params.tags }}
+      <footer class="article-footer">
+        <span>{{ if eq $.Lang "zh" }}标签{{ else }}Tags{{ end }}</span>
+        <ul class="inline-tags">
+          {{ range . }}<li><a href="{{ printf "/tags/%s/" (. | urlize) | relLangURL }}">#{{ . }}</a></li>{{ end }}
+        </ul>
+      </footer>
+    {{ end }}
+  </article>
+{{ end }}

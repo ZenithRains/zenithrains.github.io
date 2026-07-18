@@ -1,0 +1,25 @@
+{{ $pages := .pages }}
+{{ $lang := .lang }}
+{{ if $pages }}
+  <ol class="article-list">
+    {{ range $pages }}
+      <li>
+        <article class="article-card">
+          <div class="article-meta">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+            {{ with index .Params.series 0 }}<span class="meta-divider">/</span><span>{{ . }}</span>{{ end }}
+          </div>
+          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          {{ with .Description }}<p>{{ . }}</p>{{ else }}{{ with .Summary }}<p>{{ . | plainify | truncate 180 }}</p>{{ end }}{{ end }}
+          {{ with .Params.tags }}
+            <ul class="inline-tags" aria-label="{{ if eq $lang "zh" }}标签{{ else }}Tags{{ end }}">
+              {{ range . }}<li><a href="{{ printf "/tags/%s/" (. | urlize) | relLangURL }}">#{{ . }}</a></li>{{ end }}
+            </ul>
+          {{ end }}
+        </article>
+      </li>
+    {{ end }}
+  </ol>
+{{ else }}
+  <p class="empty-state">{{ if eq $lang "zh" }}内容正在整理中。{{ else }}Writing will appear here soon.{{ end }}</p>
+{{ end }}
