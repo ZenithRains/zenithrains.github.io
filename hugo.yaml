@@ -15,7 +15,7 @@ taxonomies:
   series: series
 
 permalinks:
-  blog: /blog/:year/:month/:slug/
+  notes: /notes/:year/:month/:slug/
   essays: /essays/:year/:month/:slug/
 
 params:
@@ -26,7 +26,7 @@ params:
   xiaohongshu: https://xhslink.com/m/1qn8OMmshDC
   description: "Personal website of Ruiyi Zhang: research, writing, and projects."
   mainSections:
-    - blog
+    - notes
     - essays
 
 languages:
@@ -47,8 +47,8 @@ languages:
         - name: Publications
           pageRef: /publications
           weight: 20
-        - name: Blog
-          pageRef: /blog
+        - name: Notes
+          pageRef: /notes
           weight: 30
         - name: Essays
           pageRef: /essays
@@ -77,8 +77,8 @@ languages:
         - name: 学术成果
           pageRef: /publications
           weight: 20
-        - name: 博客
-          pageRef: /blog
+        - name: 随记
+          pageRef: /notes
           weight: 30
         - name: 随笔
           pageRef: /essays

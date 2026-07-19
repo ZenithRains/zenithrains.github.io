@@ -76,9 +76,9 @@
     <section class="home-section shell-home">
       <div class="section-heading">
         <h2>{{ if eq .Lang "zh" }}最近写作{{ else }}Recent writing{{ end }}</h2>
-        <a href="{{ "/blog/" | relLangURL }}">{{ if eq .Lang "zh" }}查看全部{{ else }}View all{{ end }} <span aria-hidden="true">→</span></a>
+        <a href="{{ "/writing/" | relLangURL }}">{{ if eq .Lang "zh" }}查看全部{{ else }}View all{{ end }} <span aria-hidden="true">→</span></a>
       </div>
-      {{ partial "article-list.html" (dict "pages" (first 4 $writing.ByDate.Reverse) "lang" .Lang) }}
+      {{ partial "article-list.html" (dict "pages" (first 4 $writing.ByDate.Reverse) "lang" .Lang "showSection" true) }}
     </section>
   {{ end }}
 {{ end }}

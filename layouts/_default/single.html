@@ -1,7 +1,7 @@
 {{ define "main" }}
   <article class="article-page shell-narrow">
     <header class="article-header">
-      {{ if or (eq .Section "blog") (eq .Section "essays") }}
+      {{ if or (eq .Section "notes") (eq .Section "essays") }}
         <div class="article-meta">
           <time datetime="{{ .Date.Format "2006-01-02" }}">{{ if eq .Lang "zh" }}{{ .Date.Format "2006 年 1 月 2 日" }}{{ else }}{{ .Date.Format "2 January 2006" }}{{ end }}</time>
           {{ with .ReadingTime }}<span class="meta-divider">/</span><span>{{ . }} {{ if eq $.Lang "zh" }}分钟阅读{{ else }}min read{{ end }}</span>{{ end }}

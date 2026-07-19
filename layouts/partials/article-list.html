@@ -1,5 +1,6 @@
 {{ $pages := .pages }}
 {{ $lang := .lang }}
+{{ $showSection := .showSection | default false }}
 {{ if $pages }}
   <ol class="article-list">
     {{ range $pages }}
@@ -7,6 +8,7 @@
         <article class="article-card">
           <div class="article-meta">
             <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+            {{ if $showSection }}<span class="meta-divider">/</span><a class="meta-section" href="{{ .CurrentSection.RelPermalink }}">{{ .CurrentSection.Title }}</a>{{ end }}
             {{ with index .Params.series 0 }}<span class="meta-divider">/</span><a class="meta-series" href="{{ printf "/series/%s/" (. | urlize) | relLangURL }}">{{ . }}</a>{{ end }}
           </div>
           <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>

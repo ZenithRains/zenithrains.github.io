@@ -636,6 +636,7 @@ html:lang(zh-CN) .page-lead {
 }
 
 .meta-series,
+.meta-section,
 .series-line a {
   color: inherit;
   text-decoration-color: var(--line);

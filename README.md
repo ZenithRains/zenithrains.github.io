@@ -6,7 +6,7 @@ personal academic website built with Hugo and deployed through GitHub Actions.
 ## Content structure
 
 - `content/en` and `content/zh`: English and Chinese pages
-- `content/*/blog`: blog posts and notes
+- `content/*/notes`: short, self-contained notes and observations
 - `content/*/essays`: essays and serialized columns
 - `data/publications.yaml`: verified publication records
 - `static/files`: downloadable CV and PDF files
