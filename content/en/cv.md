@@ -3,7 +3,7 @@ title: Curriculum Vitae
 description: Curriculum vitae of Ruiyi Zhang.
 translationKey: cv
 layout: cv
-pdf: ""
+pdf: "/files/cv-ruiyi-zhang.pdf"
 ---
 
-The CV will be available to read online and download after the PDF is added.
+View my current CV below, or open and download the PDF.
