@@ -1,8 +1,8 @@
 ---
-title: "I Suddenly Realized You Can Draw a PDE Energy Estimate as a Graph"
+title: "A Categorical Translation of Energy Estimates"
 date: 2026-07-20
 slug: pde-energy-estimates-categorical-view
-description: "I started wondering whether category theory could describe the way PDE analysts use inequalities, reuse estimates, and choose Young parameters."
+description: "This article discusses how category theory describes the composition of inequalities, reuse of estimates, parameter choices, and closure in PDE energy estimates."
 translationKey: pde-energy-estimates-categorical-view
 tags:
   - PDE
@@ -66,3 +66,5 @@ Once this graph is available, there are many more questions to ask. For example,
 This should not be oversold. The present model has not produced a new PDE theorem, and it will not invent estimates for us automatically. What it has done is to turn the problems faced by PDE analysts into mathematical symbols. When a plan fails, we can keep asking questions. Was there no abstract route at all? Did the route exist but fail to lift? Did several local parameters conflict? Or did the argument simply run short of dissipation budget at the end? Honestly, this is already a lot of fun. The concrete inequalities still have to be proved one by one. But we can finally study, as a mathematical object, how these inequalities connect, where they branch, and where they fail. Perhaps the next step is to search for missing rules in the graph, locate the first failing subgraph, or compare two closure schemes and identify the exact step at which they diverge.
 
 The full definitions and proofs are available in the accompanying note: [A Categorical Semantics for PDE Energy Estimates (v1 PDF)](/files/pde-energy-categorical-semantics-v1.pdf).
+
+The idea of connecting energy estimates with Galois duality is mine; the concrete categorical implementation was completed by GPT 5.6 Sol.
