@@ -29,7 +29,7 @@
   --home: 860px;
   --narrow: 760px;
   --serif: "EB Garamond", Garamond, Georgia, "Times New Roman", serif;
-  --cjk-serif: "EB Garamond", "Noto Serif SC Variable", "Source Han Serif SC", "Songti SC", "STSong", serif;
+  --zh-font: "EB Garamond", "Noto Sans SC Variable", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
 :root[data-theme="dark"] {
@@ -71,7 +71,7 @@ body {
 }
 
 html:lang(zh-CN) body {
-  font-family: var(--cjk-serif);
+  font-family: var(--zh-font);
   font-size: 17px;
   line-height: 1.8;
 }
@@ -88,7 +88,7 @@ html:lang(zh-CN) h1,
 html:lang(zh-CN) h2,
 html:lang(zh-CN) h3,
 html:lang(zh-CN) h4 {
-  font-family: var(--cjk-serif);
+  font-family: var(--zh-font);
 }
 
 a {
@@ -1078,7 +1078,7 @@ html:lang(zh-CN) .prose h4 {
 }
 
 html:lang(zh-CN) .map-node text {
-  font-family: var(--cjk-serif);
+  font-family: var(--zh-font);
 }
 
 .map-node:focus text,
@@ -1269,7 +1269,7 @@ html:lang(zh-CN) .map-node text {
   .shell-home,
   .header-inner,
   .footer-inner {
-    width: min(calc(100% - 28px), var(--content));
+    width: min(calc(100% - 44px), var(--content));
   }
 
   .header-inner {
@@ -1278,7 +1278,7 @@ html:lang(zh-CN) .map-node text {
 
   .site-nav {
     top: 66px;
-    padding-inline: 14px;
+    padding-inline: 22px;
   }
 
   .site-mark {
