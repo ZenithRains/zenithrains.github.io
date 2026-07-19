@@ -1,9 +1,7 @@
 {{ define "main" }}
   {{ $writing := where .Site.RegularPages "Section" "in" .Site.Params.mainSections }}
   <header class="page-header shell">
-    <p class="eyebrow">{{ if eq .Lang "zh" }}写作{{ else }}Writing{{ end }}</p>
     <h1>{{ .Title }}</h1>
-    {{ with .Content }}<div class="page-description prose">{{ . }}</div>{{ end }}
   </header>
 
   <section class="shell content-section">

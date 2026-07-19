@@ -1,9 +1,7 @@
 {{ define "main" }}
   {{ $publications := hugo.Data.publications.publications }}
   <header class="page-header shell">
-    <p class="eyebrow">{{ if eq .Lang "zh" }}研究{{ else }}Research{{ end }}</p>
     <h1>{{ .Title }}</h1>
-    {{ with .Content }}<div class="page-description prose">{{ . }}</div>{{ end }}
   </header>
 
   <section class="shell content-section publications-section">

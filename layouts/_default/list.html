@@ -1,8 +1,6 @@
 {{ define "main" }}
   <header class="page-header shell">
-    <p class="eyebrow">{{ if eq .Lang "zh" }}栏目{{ else }}Collection{{ end }}</p>
     <h1>{{ .Title }}</h1>
-    {{ with .Content }}<div class="page-description prose">{{ . }}</div>{{ end }}
   </header>
   <section class="shell content-section">
     {{ partial "article-list.html" (dict "pages" .Paginator.Pages "lang" .Lang) }}
