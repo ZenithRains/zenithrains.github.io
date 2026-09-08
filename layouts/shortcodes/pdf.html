@@ -3,7 +3,7 @@
 <figure class="embedded-pdf">
   <div class="pdf-actions">
     <a class="button" href="{{ $src | relURL }}" download>{{ if eq .Page.Lang "zh" }}下载 PDF{{ else }}Download PDF{{ end }}</a>
-    <a class="text-link" href="{{ $src | relURL }}">{{ if eq .Page.Lang "zh" }}新窗口打开{{ else }}Open in a new tab{{ end }} ↗</a>
+    <a class="text-link" href="{{ $src | relURL }}" target="_blank" rel="noopener">{{ if eq .Page.Lang "zh" }}新窗口打开{{ else }}Open in a new tab{{ end }} ↗</a>
   </div>
   <object class="pdf-viewer" data="{{ $src | relURL }}#view=FitH" type="application/pdf" aria-label="{{ $title }}">
     <p><a href="{{ $src | relURL }}">{{ if eq .Page.Lang "zh" }}下载 PDF{{ else }}Download the PDF{{ end }}</a></p>
