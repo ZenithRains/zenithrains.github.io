@@ -29,7 +29,8 @@
   --home: 860px;
   --narrow: 760px;
   --serif: "EB Garamond", Garamond, Georgia, "Times New Roman", serif;
-  --zh-font: "EB Garamond", "Noto Sans SC Variable", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --zh-font: "Noto Sans SC Variable", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --ui-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC Variable", "PingFang SC", sans-serif;
 }
 
 :root[data-theme="dark"] {
@@ -209,6 +210,7 @@ video {
 .site-nav a,
 .language-link,
 .footer-links a {
+  font-family: var(--ui-font);
   color: var(--muted);
   font-size: 15px;
   font-weight: 600;
@@ -302,7 +304,7 @@ video {
 
 /* Home */
 .profile-hero {
-  padding-block: clamp(76px, 9vw, 104px) clamp(80px, 10vw, 116px);
+  padding-block: clamp(48px, 6vw, 68px) clamp(48px, 6vw, 72px);
 }
 
 .profile-grid {
@@ -325,11 +327,11 @@ video {
   border: 1px solid var(--line);
   border-radius: 50%;
   background: var(--surface);
-  box-shadow: 0 12px 32px rgba(49, 43, 39, 0.1);
+  box-shadow: none;
 }
 
 :root[data-theme="dark"] .profile-photo {
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.32);
+  box-shadow: none;
 }
 
 .profile-links {
@@ -353,13 +355,13 @@ video {
 }
 
 .profile-icon-link svg {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   fill: currentColor;
 }
 
 .profile-icon-link .icon-xiaohongshu {
-  width: 34px;
+  width: 30px;
 }
 
 .profile-icon-link .cv-icon {
@@ -386,6 +388,7 @@ video {
 }
 
 .profile-actions a {
+  font-family: var(--ui-font);
   color: var(--accent);
   font-size: 14px;
   font-weight: 600;
@@ -513,7 +516,7 @@ html:lang(zh-CN) .profile-intro {
 .section-heading h2,
 .map-heading h2 {
   margin: 0;
-  font-size: clamp(25px, 3vw, 31px);
+  font-size: clamp(23px, 3vw, 26px);
   font-weight: 600;
   letter-spacing: -0.015em;
 }
@@ -570,7 +573,7 @@ html:lang(zh-CN) .profile-intro {
 
 /* Pages and articles */
 .page-header {
-  padding-block: clamp(68px, 9vw, 96px) 44px;
+  padding-block: clamp(40px, 6vw, 60px) 28px;
 }
 
 .page-header h1,
@@ -582,6 +585,10 @@ html:lang(zh-CN) .profile-intro {
   font-weight: 550;
   letter-spacing: -0.006em;
   line-height: 1.1;
+}
+
+.page-header h1 {
+  font-size: clamp(32px, 4vw, 36px);
 }
 
 html:lang(zh-CN) .page-header h1,
@@ -617,10 +624,8 @@ html:lang(zh-CN) .page-lead {
 }
 
 .article-card {
-  display: grid;
-  grid-template-columns: 190px minmax(0, 1fr);
-  column-gap: clamp(28px, 5vw, 75px);
-  padding-block: 28px 30px;
+  display: block;
+  padding-block: 24px;
   border-top: 1px solid var(--line);
 }
 
@@ -629,6 +634,7 @@ html:lang(zh-CN) .page-lead {
 }
 
 .article-meta {
+  font-family: var(--ui-font);
   color: var(--muted);
   font-size: 12px;
   font-variant-numeric: tabular-nums;
@@ -643,8 +649,8 @@ html:lang(zh-CN) .page-lead {
 }
 
 .article-card .article-meta {
-  grid-row: span 3;
-  padding-top: 7px;
+  margin-top: 8px;
+  padding: 0;
 }
 
 .meta-divider {
@@ -654,10 +660,10 @@ html:lang(zh-CN) .page-lead {
 
 .article-card h2 {
   margin: 0;
-  font-size: clamp(22px, 3vw, 31px);
+  font-size: clamp(22px, 3vw, 24px);
   font-weight: 600;
   letter-spacing: -0.008em;
-  line-height: 1.22;
+  line-height: 1.4;
 }
 
 .article-card h2 a {
@@ -674,10 +680,11 @@ html:lang(zh-CN) .page-lead {
   max-width: 700px;
   margin-block: 10px 0;
   color: var(--muted);
-  font-size: 15.5px;
+  font-size: 17px;
 }
 
 .inline-tags {
+  font-family: var(--ui-font);
   display: flex;
   flex-wrap: wrap;
   gap: 7px 12px;
@@ -1215,8 +1222,7 @@ html:lang(zh-CN) .map-node text {
   }
 
   .article-card .article-meta {
-    grid-row: auto;
-    padding: 0 0 9px;
+    padding: 0;
   }
 
   .publication article {
@@ -1237,7 +1243,7 @@ html:lang(zh-CN) .map-node text {
 
 @media (max-width: 700px) {
   .profile-hero {
-    padding-block: 58px 68px;
+    padding-block: 40px 48px;
   }
 
   .profile-grid {
@@ -1301,7 +1307,7 @@ html:lang(zh-CN) .map-node text {
   }
 
   .profile-hero {
-    padding-block: 48px 58px;
+    padding-block: 32px 40px;
   }
 
   .profile-photo {
@@ -1337,7 +1343,11 @@ html:lang(zh-CN) .map-node text {
   }
 
   .page-header {
-    padding-block: 64px 40px;
+    padding-block: 40px 24px;
+  }
+
+  .page-header h1 {
+    font-size: 32px;
   }
 
   .article-page {

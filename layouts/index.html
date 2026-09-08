@@ -39,7 +39,6 @@
       </div>
 
       <div class="profile-copy">
-        <p class="profile-kicker">{{ if eq .Lang "zh" }}研究 · 写作 · 随笔{{ else }}Research · Writing · Notes{{ end }}</p>
         <h1>{{ .Site.Params.authorName }}</h1>
         <div class="profile-intro prose">{{ .Content }}</div>
         <nav class="profile-actions" aria-label="{{ if eq .Lang "zh" }}主页入口{{ else }}Homepage links{{ end }}">
