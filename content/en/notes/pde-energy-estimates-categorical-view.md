@@ -10,7 +10,7 @@ tags:
   - Category theory
   - Abstract interpretation
 math: true
-draft: false
+draft: true
 ---
 
 I once started thinking about PDE energy estimates. An energy estimate is a kind of coarse-graining: it turns a PDE into an ODE problem. When doing an energy estimate, one often runs into the following situation. Every time Young's inequality appears, one says: take a sufficiently small $\varepsilon$. But these $\varepsilon$'s cannot be chosen separately. An intermediate estimate from an earlier step may be needed in two later places. The same nonlinear term may also admit several different routes. Every individual step looks fine, yet the steps may conflict when put together. There is reuse here. There is branching. There are different routes to compare, and there is the global compatibility of local parameters. This ought to have a mathematical structure of its own. One can also notice that analysts sometimes close an estimate by introducing a new inequality. About a year ago, while reading functional analysis, I came across a theorem about the zeros of functions that looked strangely familiar, something like Hilbert's Nullstellensatz. Now I was seeing a similar structure again. Of course, this has a name: a Galois correspondence. Then I thought of category theory. Perhaps the actual moves in a PDE energy estimate can be described categorically.
