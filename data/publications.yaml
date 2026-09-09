@@ -1,5 +1,6 @@
 publications:
   - id: small-diffusivity
+    shortTitle: 弱扩散下的质量集中
     year: 2026
     title: Small-Diffusivity Concentration for Fractional Aggregation with Cusp Attraction
     authors: Ruiyi Zhang, Xiaoxin Zheng
@@ -16,9 +17,10 @@ publications:
       zh: 已投稿 Mathematical Methods in the Applied Sciences（Wiley），2026年。
       en: Submitted to Mathematical Methods in the Applied Sciences (Wiley), 2026.
     summary:
-      zh: 研究尖点吸引下分数阶聚集方程的小扩散质量集中。在径向对称及明确的观测时间、尺度条件下，手稿利用帐篷型截断矩、非局部跨边界分解与 Lorentz 空间估计，得到内禀尺度上时间积分质量的扩散参数一致正下界。
-      en: We study small-diffusivity mass concentration for a fractional aggregation equation with cusp attraction. Under radial symmetry and explicit observation-time and scale conditions, the manuscript establishes a diffusivity-uniform positive lower bound for time-integrated mass at the intrinsic scale, using a tent-moment argument, nonlocal boundary decomposition, and Lorentz-space estimates.
+      zh: 扩散逐渐减弱时，吸引作用会怎样让质量集中？我和导师郑孝信通过局部质量估计与非局部分析，将尺度平衡转化为带有明确条件的集中结论。
+      en: How does attraction concentrate mass as diffusion weakens? My advisor, Xiaoxin Zheng, and I combine local mass estimates with nonlocal analysis to turn a scale balance into a concentration result under explicit assumptions.
   - id: nutrient-taxis
+    shortTitle: 双退化趋营养系统的长期行为
     year: 2026
     title: Time-Uniform Boundedness and Large-Time Behavior for a Planar Doubly Degenerate Nutrient-Taxis System
     authors: Ruiyi Zhang, Xiaoxin Zheng
@@ -35,5 +37,26 @@ publications:
       zh: 手稿打磨中，尚未投稿，2026年。
       en: Manuscript in preparation; not yet submitted, 2026.
     summary:
-      zh: 研究二维双退化趋营养系统的全局有界弱解、正时间正则性和长时间行为。当前手稿结合补偿型熵估计、半径一致不等式与内禀矩迭代推进先验估计和弱解构造。
-      en: This ongoing work concerns global bounded weak solutions, positive-time regularity, and large-time behavior for a planar doubly degenerate nutrient-taxis system. The current approach combines compensated entropy estimates, radius-uniform inequalities, and an intrinsic moment iteration.
+      zh: 种群密度或营养浓度趋近零时，扩散都会减弱。我和导师郑孝信寻找能承受双重退化的能量结构，研究解的有界性与长期演化。
+      en: Diffusion weakens as population density or nutrient concentration approaches zero. My advisor, Xiaoxin Zheng, and I seek energy estimates that handle both degeneracies and describe boundedness and long-term evolution.
+  - id: proof-or-obstruction
+    year: 2026
+    shortTitle: PDE 能量估计的搜索与验证
+    title: "Proof or Obstruction: Verifier-Guided Diagnosis of PDE Energy Estimates"
+    authors: Ruiyi Zhang
+    page: /notes/2026/07/proof-or-obstruction/
+    status:
+      zh: 研究手稿 v2，2026年7月。
+      en: Research manuscript v2, July 2026.
+    summary:
+      zh: 我想让大模型探索 PDE 能量估计，并检查推导中的假设、指数与吸收预算。这个项目用可执行验证器分析固定模板内的证明路线和障碍，帮助定位估计无法闭合的原因。
+      en: I explore how models can search for PDE energy estimates while checking assumptions, exponents, and absorption budgets. An executable verifier diagnoses proof routes and obstructions within fixed templates.
+    question:
+      zh: 怎样判断模型给出的能量估计真正闭合，并定位失败的环节？
+      en: How can we check whether a proposed energy estimate closes and locate the source of failure?
+    methods:
+      zh: 将固定模板内的参数与预算问题写成凸优化，记录推导依赖，并用验证器检查候选路线。
+      en: Express parameter and budget choices within fixed templates as convex optimization, track dependencies, and verify candidate routes.
+    result:
+      zh: 已完成原型与小规模实验，研究说明列出测试范围、基线和局限。
+      en: A prototype and small-scale experiments are complete. The research note documents the test scope, baselines, and limitations.

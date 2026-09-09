@@ -34,15 +34,13 @@
         <p class="internship-note">{{ .Params.availability }}</p>
         <nav class="profile-actions" aria-label="{{ if eq .Lang "zh" }}主页入口{{ else }}Homepage links{{ end }}">
           <a href="{{ "/about/" | relLangURL }}">{{ if eq .Lang "zh" }}个人简介{{ else }}About me{{ end }} <span aria-hidden="true">→</span></a>
-          <a href="{{ "/cv/" | relLangURL }}">CV</a>
-          <a href="mailto:{{ .Site.Params.email }}">{{ if eq .Lang "zh" }}邮箱{{ else }}Email{{ end }}</a>
         </nav>
       </div>
     </div>
   </section>
 
   <section class="home-section shell-home">
-    <div class="section-heading"><h2>{{ if eq .Lang "zh" }}当前研究{{ else }}Current research{{ end }}</h2><a href="{{ "/publications/" | relLangURL }}">{{ if eq .Lang "zh" }}研究页面{{ else }}Research page{{ end }}</a></div>
+    <div class="section-heading"><h2>{{ if eq .Lang "zh" }}代表研究{{ else }}Selected research{{ end }}</h2><a href="{{ "/publications/" | relLangURL }}">{{ if eq .Lang "zh" }}全部研究{{ else }}All research{{ end }}</a></div>
     {{ partial "research-list.html" . }}
   </section>
   <section class="home-section shell-home">
@@ -50,7 +48,6 @@
     <div class="prose now-copy">{{ .Content }}</div>
   </section>
 
-  {{ partial "research-notes.html" . }}
   {{ $writing := where .Site.RegularPages "Section" "in" .Site.Params.mainSections }}
   {{ $writing = where $writing "Params.researchShowcase" "ne" true }}
   {{ if $writing }}
@@ -63,6 +60,7 @@
     </section>
   {{ end }}
   <section class="home-section shell-home now-section">
+    <figure class="hydrangea"><img src="{{ "/images/hydrangea-editorial.png" | relURL }}" alt="{{ if eq .Lang "zh" }}蓝紫色紫阳花，AI 生成图像{{ else }}Blue-violet hydrangeas, an AI-generated image{{ end }}" width="1536" height="512" loading="lazy"></figure>
     <div class="section-heading"><h2>{{ if eq .Lang "zh" }}近况{{ else }}Currently{{ end }}</h2></div>
     <p>{{ .Params.personal }}</p>
   </section>

@@ -1,0 +1,15 @@
+Hydrangea editorial image
+Created with OpenAI built-in image generation on 2026-09-09.
+Original generated image, not a photograph taken by Ruiyi Zhang.
+Source dimensions: 2172 x 724 pixels.
+
+Prompt:
+Use case: photorealistic-natural
+Asset type: shallow horizontal photographic banner for a modern personal academic website
+Primary request: Create exactly one original quiet editorial still-life photograph of blue-violet hydrangea blossoms with a little natural green foliage.
+Scene/backdrop: unobtrusive softly blurred natural garden background, filled only with flowers and foliage.
+Style/medium: convincing natural botanical photography, restrained and contemplative, detailed delicate petals with subtle organic imperfections.
+Composition/framing: very wide horizontal 3:1 aspect ratio, close-up clusters of hydrangea blossoms gently spread across the frame, appropriate for a shallow website banner.
+Lighting/mood: soft diffuse daylight, quiet intimate mood, gentle shadows.
+Color palette: restrained natural blue and violet blossoms, modest green foliage, no exaggerated saturation.
+Constraints: no text, no people, no graphic overlays, no watermark, no extra objects. This is an original generated photographic-style image, not a supplied user-taken photograph.
