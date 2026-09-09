@@ -60,7 +60,6 @@
     </section>
   {{ end }}
   <section class="home-section shell-home now-section">
-    <figure class="hydrangea"><img src="{{ "/images/hydrangea-editorial.png" | relURL }}" alt="{{ if eq .Lang "zh" }}蓝紫色紫阳花，AI 生成图像{{ else }}Blue-violet hydrangeas, an AI-generated image{{ end }}" width="1536" height="512" loading="lazy"></figure>
     <div class="section-heading"><h2>{{ if eq .Lang "zh" }}近况{{ else }}Currently{{ end }}</h2></div>
     <p>{{ .Params.personal }}</p>
   </section>

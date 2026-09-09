@@ -1,5 +1,4 @@
 /* Quiet personal homepage. */
-@font-face { font-family: "Ruiyi Name Kai"; src: url("../fonts/wenkai/name.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; unicode-range: U+5F20,U+777F,U+6EA2; }
 :root { --content: 780px; --home: 780px; --narrow: 720px; --accent: #28639c; --muted: #686b70; }
 :root[data-theme="dark"] { --accent: #90b9de; --muted: #a6aaaf; }
 body, html:lang(zh-CN) body { font-size: 16px; line-height: 1.8; }
@@ -15,7 +14,7 @@ body, html:lang(zh-CN) body { font-size: 16px; line-height: 1.8; }
 .profile-copy { grid-column: 1; grid-row: 1; }
 .profile-photo { width: 240px; height: auto; aspect-ratio: auto; object-fit: contain; border: 0; border-radius: 0; background: transparent; }
 .profile-copy h1, html:lang(zh-CN) .profile-copy h1 { font-size: 32px; line-height: 1.3; font-weight: 600; text-align: left; }
-html:lang(zh-CN) .profile-copy h1 { font-family: "Ruiyi Name Kai", "Kaiti SC", KaiTi, serif; font-size: 36px; font-weight: 400; letter-spacing: .08em; }
+html:lang(zh-CN) .profile-copy h1 { font-family: var(--system-font); font-size: 32px; font-weight: 500; letter-spacing: normal; }
 .profile-copy h1 { font-weight: 500; }
 .profile-intro, html:lang(zh-CN) .profile-intro { font-size: 16px; line-height: 1.85; margin-top: 20px; }
 .profile-links { gap: 0; margin-top: 12px; }
@@ -80,7 +79,7 @@ html:lang(zh-CN) .profile-copy h1 { font-family: "Ruiyi Name Kai", "Kaiti SC", K
   .profile-links { margin-top: 8px; margin-left: -7px; }
   .profile-copy { grid-column: 1; grid-row: 2; }
   .profile-copy h1, html:lang(zh-CN) .profile-copy h1 { font-size: 28px; }
-  html:lang(zh-CN) .profile-copy h1 { font-size: 30px; }
+  html:lang(zh-CN) .profile-copy h1 { font-size: 28px; }
   .profile-intro { margin-top: 14px; }
   .home-section { padding: 26px 0 16px; }
   .section-heading { margin-bottom: 16px; }

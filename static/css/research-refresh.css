@@ -3,8 +3,6 @@
 :root[data-theme="dark"] { --accent: #a5b9e0; --muted: #b4bac4; }
 .site-mark { width:auto; height:auto; white-space:nowrap; font-size:16px; font-weight:600; color:var(--ink); text-decoration:none; border:0; border-radius:0; background:none; box-shadow:none; }
 .site-mark span { display:block; }
-.hydrangea { margin:0 0 28px; }
-.hydrangea img { width:100%; height:auto; max-height:190px; object-fit:cover; display:block; }
 .research-original-title { margin:8px 0 0; color:var(--muted); font-size:14px; line-height:1.6; max-width:720px; }
 .research-summary { max-width:740px; font-size:16px; line-height:1.8; }
 .pdf-actions { flex-wrap:wrap; }
@@ -50,7 +48,6 @@
   .header-actions { grid-column:2; grid-row:1; }
   .site-nav { grid-column:1 / -1; grid-row:2; gap:24px; }
   .site-nav a, .language-link { font-size:14px; }
-  .hydrangea img { min-height:120px; }
   .header-inner { min-height:72px; }
   .profile-hero { padding-top:28px; }
   .profile-grid { display:flex; flex-direction:column-reverse; align-items:stretch; gap:24px; }
