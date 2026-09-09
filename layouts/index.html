@@ -40,13 +40,18 @@
 
       <div class="profile-copy">
         <h1>{{ .Site.Params.authorName }}</h1>
-        <div class="profile-intro prose">{{ .Content }}</div>
+        <div class="profile-intro prose">{{ index (split .Content "</p>") 0 | safeHTML }}</p></div>
         <nav class="profile-actions" aria-label="{{ if eq .Lang "zh" }}主页入口{{ else }}Homepage links{{ end }}">
           <a href="{{ "/about/" | relLangURL }}">{{ if eq .Lang "zh" }}个人简介{{ else }}About me{{ end }} <span aria-hidden="true">→</span></a>
           <a href="{{ "/publications/" | relLangURL }}">{{ if eq .Lang "zh" }}学术成果{{ else }}Publications{{ end }} <span aria-hidden="true">→</span></a>
         </nav>
       </div>
     </div>
+  </section>
+
+  <section class="home-section shell-home now-section">
+    <div class="section-heading"><h2>{{ if eq .Lang "zh" }}近况{{ else }}Currently{{ end }}</h2></div>
+    <div class="prose now-copy">{{ range after 1 (split .Content "</p>") }}{{ if strings.TrimSpace . }}{{ . | safeHTML }}</p>{{ end }}{{ end }}</div>
   </section>
 
   {{ $publications := hugo.Data.publications.publications }}

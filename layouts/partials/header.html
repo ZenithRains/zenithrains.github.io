@@ -10,9 +10,9 @@
     </button>
 
     <nav class="site-nav" id="site-nav" aria-label="{{ if eq .Lang "zh" }}主导航{{ else }}Primary navigation{{ end }}">
-      {{ range .Site.Menus.main }}
-        <a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a>
-      {{ end }}
+      <a href="{{ "/about/" | relLangURL }}">{{ if eq .Lang "zh" }}关于{{ else }}About{{ end }}</a>
+      <a href="{{ "/publications/" | relLangURL }}">{{ if eq .Lang "zh" }}研究{{ else }}Research{{ end }}</a>
+      <a href="{{ "/writing/" | relLangURL }}">{{ if eq .Lang "zh" }}写作{{ else }}Writing{{ end }}</a>
     </nav>
 
     <div class="header-actions">
