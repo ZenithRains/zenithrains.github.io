@@ -10,10 +10,10 @@ body, html:lang(zh-CN) body { font-size: 16px; line-height: 1.8; }
 .site-nav a, .language-link, .footer-links a { font-size: 14px; font-weight: 400; }
 .theme-toggle { border: 0; }
 .profile-hero { padding: 56px 0 38px; }
-.profile-grid { grid-template-columns: minmax(0, 1fr) 172px; gap: 60px; align-items: center; }
+.profile-grid { grid-template-columns: minmax(0, 1fr) 240px; gap: 40px; align-items: center; }
 .profile-portrait { grid-column: 2; grid-row: 1; }
 .profile-copy { grid-column: 1; grid-row: 1; }
-.profile-photo { width: 172px; height: 172px; aspect-ratio: 1; border: 0; border-radius: 0; }
+.profile-photo { width: 240px; height: auto; aspect-ratio: auto; object-fit: contain; border: 0; border-radius: 0; background: transparent; }
 .profile-copy h1, html:lang(zh-CN) .profile-copy h1 { font-size: 32px; line-height: 1.3; font-weight: 600; text-align: left; }
 html:lang(zh-CN) .profile-copy h1 { font-family: "Ruiyi Name Kai", "Kaiti SC", KaiTi, serif; font-size: 36px; font-weight: 400; letter-spacing: .08em; }
 .profile-copy h1 { font-weight: 500; }
@@ -68,7 +68,7 @@ html:lang(zh-CN) .profile-copy h1 { font-family: "Ruiyi Name Kai", "Kaiti SC", K
   .profile-hero { padding: 34px 0 12px; }
   .profile-grid { grid-template-columns: 1fr; gap: 24px; }
   .profile-portrait { grid-column: 1; grid-row: 1; justify-self: start; }
-  .profile-photo { width: 124px; height: 124px; margin: 0; }
+  .profile-photo { width: 190px; height: auto; margin: 0; }
   .profile-links { margin-top: 8px; margin-left: -7px; }
   .profile-copy { grid-column: 1; grid-row: 2; }
   .profile-copy h1, html:lang(zh-CN) .profile-copy h1 { font-size: 28px; }
