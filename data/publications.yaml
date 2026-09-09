@@ -3,6 +3,15 @@ publications:
     year: 2026
     title: Small-Diffusivity Concentration for Fractional Aggregation with Cusp Attraction
     authors: Ruiyi Zhang, Xiaoxin Zheng
+    question:
+      zh: 扩散趋弱时，尖点吸引能否使质量在内禀尺度上集中？
+      en: As diffusion weakens, can cusp attraction concentrate mass at the intrinsic scale?
+    methods:
+      zh: 帐篷型截断矩、非局部跨边界分解、Lorentz 空间估计。
+      en: Tent moments, nonlocal boundary decomposition, and Lorentz-space estimates.
+    result:
+      zh: 在径向对称及明确的观测时间、尺度条件下，获得时间积分质量的扩散参数一致正下界。
+      en: Under radial symmetry and explicit time and scale conditions, a diffusivity-uniform positive lower bound for time-integrated mass.
     status:
       zh: 已投稿 Mathematical Methods in the Applied Sciences（Wiley），2026年。
       en: Submitted to Mathematical Methods in the Applied Sciences (Wiley), 2026.
@@ -13,6 +22,15 @@ publications:
     year: 2026
     title: Time-Uniform Boundedness and Large-Time Behavior for a Planar Doubly Degenerate Nutrient-Taxis System
     authors: Ruiyi Zhang, Xiaoxin Zheng
+    question:
+      zh: 二维双退化趋营养系统能否构造全局有界弱解，并刻画其正时间正则性与长时间行为？
+      en: Can a planar doubly degenerate nutrient-taxis system admit globally bounded weak solutions, with positive-time regularity and controlled large-time behavior?
+    methods:
+      zh: 补偿型熵估计、半径一致不等式、内禀矩迭代。
+      en: Compensated entropy estimates, radius-uniform inequalities, and intrinsic moment iteration.
+    result:
+      zh: 当前手稿围绕先验估计与弱解构造展开，相关论证仍在打磨。
+      en: The current manuscript develops a priori estimates and a weak-solution construction; the arguments are being refined.
     status:
       zh: 手稿打磨中，尚未投稿，2026年。
       en: Manuscript in preparation; not yet submitted, 2026.

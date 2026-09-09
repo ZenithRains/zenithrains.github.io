@@ -1,0 +1,7 @@
+{{ $notes := where .Site.RegularPages "Params.researchShowcase" true }}
+{{ if $notes }}
+<section class="home-section shell-home">
+  <div class="section-heading"><h2>{{ if eq .Lang "zh" }}研究笔记{{ else }}Research notes{{ end }}</h2></div>
+  {{ partial "article-list.html" (dict "pages" $notes.ByDate.Reverse "lang" .Lang "showSection" false) }}
+</section>
+{{ end }}

@@ -1,10 +1,17 @@
 <ol class="research-list">
-  {{ range hugo.Data.publications.publications }}
+  {{ range $i, $work := hugo.Data.publications.publications }}
     <li id="{{ .id }}"><article>
-      <h3>{{ .title }}</h3>
+      <div class="research-index" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</div>
+      <div class="research-entry">
+      {{ if $.IsHome }}<h3><a href="{{ "/publications/" | relLangURL }}#{{ .id }}">{{ .title }}</a></h3>{{ else }}<h2>{{ .title }}</h2>{{ end }}
       <p class="research-authors">{{ .authors }}</p>
       <p class="research-status">{{ index .status $.Lang }}</p>
-      <p class="research-summary">{{ index .summary $.Lang }}</p>
+      <dl class="research-facts">
+        <div><dt>{{ if eq $.Lang "zh" }}核心问题{{ else }}Question{{ end }}</dt><dd>{{ index .question $.Lang }}</dd></div>
+        <div><dt>{{ if eq $.Lang "zh" }}方法{{ else }}Methods{{ end }}</dt><dd>{{ index .methods $.Lang }}</dd></div>
+        <div><dt>{{ if eq $.Lang "zh" }}进展{{ else }}Progress{{ end }}</dt><dd>{{ index .result $.Lang }}</dd></div>
+      </dl>
+      </div>
     </article></li>
   {{ end }}
 </ol>
