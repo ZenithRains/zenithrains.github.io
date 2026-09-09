@@ -50,6 +50,7 @@
     <div class="prose now-copy">{{ .Content }}</div>
   </section>
 
+  {{ partial "research-notes.html" . }}
   {{ $writing := where .Site.RegularPages "Section" "in" .Site.Params.mainSections }}
   {{ if $writing }}
     <section class="home-section shell-home">
