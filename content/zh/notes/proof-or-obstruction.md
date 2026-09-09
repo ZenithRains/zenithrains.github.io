@@ -9,6 +9,7 @@ tags: [数学, PDE, AI, 证明验证]
 math: false
 draft: false
 pdf: /files/proof-or-obstruction-v2.pdf
+dateLabel: 文件版本日期
 ---
 
 **Proof or Obstruction: Verifier-Guided Diagnosis of PDE Energy Estimates**  
@@ -39,6 +40,8 @@ Ruiyi Zhang · 2026年7月20日 · 研究手稿 v2
 我也会让大模型直接尝试完整推导，通过多候选生成、广泛搜索和反复修正寻找新路线。模型可以自由提出想法；凸优化和范畴论帮助我整理、验证和解释这些候选。
 
 接下来，我希望让模型充分探索能量泛函、变量变换与估计路线，再用数学分析和可执行验证逐步检查。在实习中，我计划从 ICM Conjectures 等问题集中选择与分析、PDE 背景相关的问题，核对文献、拆解中间命题，推进有意义的数学结果，也观察模型在哪些环节真正帮得上忙。
+
+{{< research-archive id="proof-or-obstruction" >}}
 
 ## 手稿全文
 

@@ -1,5 +1,6 @@
 publications:
   - id: small-diffusivity
+    page: /research/small-diffusivity/
     shortTitle: 弱扩散下的质量集中
     year: 2026
     title: Small-Diffusivity Concentration for Fractional Aggregation with Cusp Attraction
@@ -20,6 +21,7 @@ publications:
       zh: 扩散逐渐减弱时，吸引作用会怎样让质量集中？我和导师郑孝信通过局部质量估计与非局部分析，将尺度平衡转化为带有明确条件的集中结论。
       en: How does attraction concentrate mass as diffusion weakens? My advisor, Xiaoxin Zheng, and I combine local mass estimates with nonlocal analysis to turn a scale balance into a concentration result under explicit assumptions.
   - id: nutrient-taxis
+    page: /research/nutrient-taxis/
     shortTitle: 双退化趋营养系统的长期行为
     year: 2026
     title: Time-Uniform Boundedness and Large-Time Behavior for a Planar Doubly Degenerate Nutrient-Taxis System

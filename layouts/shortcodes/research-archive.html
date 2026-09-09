@@ -1,0 +1,15 @@
+{{ $archive := hugo.Data.research_archive }}
+{{ $file := index $archive.files (.Get "id") }}
+{{ $repo := "https://github.com/ZenithRains/zenithrains.github.io" }}
+<section class="archive-record">
+  <h2>{{ if eq .Page.Lang "zh" }}版本记录{{ else }}Version record{{ end }}</h2>
+  <ul>
+    <li>{{ if eq .Page.Lang "zh" }}文件版本日期（PDF 元数据）：{{ else }}File version date (PDF metadata): {{ end }}{{ $file.versionDate }}</li>
+    <li>{{ if eq .Page.Lang "zh" }}本次公开归档日期：{{ else }}This public archive date: {{ end }}{{ $archive.publicArchiveDate }}</li>
+    <li>{{ if eq .Page.Lang "zh" }}归档提交时间：{{ else }}Archive commit time: {{ end }}<time datetime="{{ $archive.committedAt }}">{{ $archive.committedAt }}</time></li>
+  </ul>
+  <p><a href="{{ $repo }}/blob/{{ $archive.commit }}/static/files/{{ $file.path }}">{{ if eq .Page.Lang "zh" }}固定版本 PDF（GitHub）{{ else }}Version-pinned PDF on GitHub{{ end }}</a> · <a href="{{ $repo }}/commit/{{ $archive.commit }}">{{ if eq .Page.Lang "zh" }}归档提交{{ else }}Archive commit{{ end }}</a></p>
+  {{ with $file.previousCommit }}<p>{{ if eq $.Page.Lang "zh" }}此文件已于 {{ $file.previousCommittedAt }} 进入本仓库，{{ else }}This file was already recorded in this repository at {{ $file.previousCommittedAt }}; {{ end }}<a href="{{ $repo }}/commit/{{ . }}">{{ if eq $.Page.Lang "zh" }}查看此前记录{{ else }}view the earlier record{{ end }}</a>。</p>{{ end }}
+  <details><summary>SHA-256</summary><code style="overflow-wrap:anywhere">{{ $file.sha256 }}</code></details>
+  <p>{{ if eq .Page.Lang "zh" }}Git 时间戳用于追踪版本，不等于独立时间认证或学术审查。{{ else }}Git timestamps track versions; they do not constitute independent timestamp certification or academic review.{{ end }}</p>
+</section>

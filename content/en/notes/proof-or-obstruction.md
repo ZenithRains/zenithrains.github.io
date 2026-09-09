@@ -9,6 +9,7 @@ tags: [Mathematics, PDE, AI, Proof verification]
 math: false
 draft: false
 pdf: /files/proof-or-obstruction-v2.pdf
+dateLabel: File version date
 ---
 
 Ruiyi Zhang · 20 July 2026 · Research manuscript v2
@@ -38,6 +39,8 @@ The prototype's replayable proofs and obstruction certificates apply to a finite
 I also want models to attempt complete derivations, search broadly over candidates, and revise their approaches. Models can propose ideas freely; convex optimization and category theory help me organize, check, and explain those candidates.
 
 My next step is to combine broad exploration of energy functionals, variable transformations, and estimate routes with mathematical analysis and executable checks. During an internship, I plan to select analysis and PDE problems relevant to my background from collections such as ICM Conjectures, check the literature, and break them into intermediate propositions. I hope to make meaningful mathematical progress and see where models genuinely help.
+
+{{< research-archive id="proof-or-obstruction" >}}
 
 ## Full manuscript
 

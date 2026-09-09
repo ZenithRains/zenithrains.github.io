@@ -1,0 +1,18 @@
+commit: 812bcfb16a8e5124df0457aac8b43e44dfc92f9b
+committedAt: "2026-09-09T23:22:46+08:00"
+publicArchiveDate: "2026-09-09"
+files:
+  small-diffusivity:
+    path: small-diffusivity-20260716-v2.pdf
+    versionDate: "2026-07-16"
+    sha256: fcc0a89d1f477dd2b386e50b495974c640e79a810415bc66e383d2cfd59a1929
+  nutrient-taxis:
+    path: nutrient-taxis-20260829-draft18.pdf
+    versionDate: "2026-08-29"
+    sha256: 3f48b386551ad25ebc64e3f970c6d4681c6c5c25a94456cbc02144a877d8b96b
+  proof-or-obstruction:
+    path: proof-or-obstruction-v2.pdf
+    versionDate: "2026-07-20"
+    sha256: 1a09e8a6b1e84e63b6772e6c5b4616f03df7add8f2e202dc6b1e341648229e7d
+    previousCommit: 9332e1b81970b1ea54d2b3c74cf021eb8cb352c0
+    previousCommittedAt: "2026-09-09T21:48:40+08:00"
