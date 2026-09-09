@@ -4,11 +4,11 @@ publications:
     title: Small-Diffusivity Concentration for Fractional Aggregation with Cusp Attraction
     authors: Ruiyi Zhang, Xiaoxin Zheng
     question:
-      zh: 扩散趋弱时，尖点吸引能否使质量在内禀尺度上集中？
-      en: As diffusion weakens, can cusp attraction concentrate mass at the intrinsic scale?
+      zh: 我想理解弱扩散与尖点吸引的竞争，怎样把尺度平衡变成可以证明的质量集中结论？
+      en: I want to understand the competition between weak diffusion and cusp attraction. How can a scale balance lead to a rigorous mass-concentration estimate?
     methods:
-      zh: 帐篷型截断矩、非局部跨边界分解、Lorentz 空间估计。
-      en: Tent moments, nonlocal boundary decomposition, and Lorentz-space estimates.
+      zh: 我和导师郑孝信用帐篷型截断矩联系局部质量，分解非局部跨边界贡献，再结合径向几何与 Lorentz 空间估计。
+      en: My advisor, Xiaoxin Zheng, and I use tent moments to track local mass, decompose nonlocal boundary contributions, and combine radial geometry with Lorentz-space estimates.
     result:
       zh: 在径向对称及明确的观测时间、尺度条件下，获得时间积分质量的扩散参数一致正下界。
       en: Under radial symmetry and explicit time and scale conditions, a diffusivity-uniform positive lower bound for time-integrated mass.
@@ -23,14 +23,14 @@ publications:
     title: Time-Uniform Boundedness and Large-Time Behavior for a Planar Doubly Degenerate Nutrient-Taxis System
     authors: Ruiyi Zhang, Xiaoxin Zheng
     question:
-      zh: 二维双退化趋营养系统能否构造全局有界弱解，并刻画其正时间正则性与长时间行为？
-      en: Can a planar doubly degenerate nutrient-taxis system admit globally bounded weak solutions, with positive-time regularity and controlled large-time behavior?
+      zh: 种群密度和营养浓度趋近零时，扩散都会减弱。我想找到能承受这种双重退化的能量结构，理解全平面上的长期演化。
+      en: Diffusion weakens as either population density or nutrient concentration approaches zero. I want to find an energy structure that can handle both degeneracies and help describe long-term evolution on the plane.
     methods:
-      zh: 补偿型熵估计、半径一致不等式、内禀矩迭代。
-      en: Compensated entropy estimates, radius-uniform inequalities, and intrinsic moment iteration.
+      zh: 我和导师郑孝信组合化学熵、营养梯度量与质量补偿，用半径一致端点不等式和矩迭代建立控制，再通过紧性方法构造弱解。
+      en: My advisor, Xiaoxin Zheng, and I combine chemical entropy, nutrient-gradient quantities, and mass compensation, use radius-uniform endpoint inequalities and moment iteration to obtain estimates, and construct weak solutions through compactness.
     result:
-      zh: 当前手稿围绕先验估计与弱解构造展开，相关论证仍在打磨。
-      en: The current manuscript develops a priori estimates and a weak-solution construction; the arguments are being refined.
+      zh: 在手稿所列初值与加权梯度能量条件下，构造全局有界弱解，并研究正时间正则性、营养衰减和种群长时间收敛。
+      en: Under the manuscript's initial-data and weighted gradient-energy assumptions, we construct globally bounded weak solutions and study positive-time regularity, nutrient decay, and long-time population convergence.
     status:
       zh: 手稿打磨中，尚未投稿，2026年。
       en: Manuscript in preparation; not yet submitted, 2026.

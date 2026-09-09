@@ -11,26 +11,36 @@ draft: false
 pdf: /files/proof-or-obstruction-v2.pdf
 ---
 
-Ruiyi Zhang · 20 July 2026 · Draft v2
+Ruiyi Zhang · 20 July 2026 · Research manuscript v2
 
-This research manuscript asks a concrete question: when a PDE energy estimate fails to close, how can we locate the failure and retain evidence that can be checked again?
+## Why I started
 
-## Approach
+In PDE energy estimates, I often spend time trying energy functionals, interpolation exponents, and Young parameters, checking whether conditions from different steps can hold together and whether the troublesome terms fit within the dissipation budget. Individual estimates can be valid while the whole chain still fails to close. I wanted a way to organize this repeated search and make both successful routes and failures easier to inspect.
 
-The manuscript separates four diagnostic layers: whether an abstract estimate has a concrete analytic instance, whether parameters across multiple estimates are jointly compatible, whether nonlinear terms fit within the dissipation budget, and whether a target is reachable within a declared rule library. Failures at these layers require different evidence and repairs.
+Within suitable finite templates, some exponent, parameter, and budget problems can be translated into linear or convex optimization. Category theory also offers a language for composing estimates, using them in parallel, and reusing their outputs. These observations motivated the manuscript.
 
-Within a finite, acyclic, explicitly enumerated rule contract, the prototype returns replayable proofs or obstruction certificates. Outside this scope, or when analytic obligations remain unresolved, it preserves `UNKNOWN`. A rule-relative obstruction describes the limits of the current library; it does not exclude a new energy functional or inequality.
+## How I approach it
 
-## Experiments and limitations
+With rules and templates fixed, I express shared parameter conditions as a feasible set and dissipation costs as objectives or constraints. In linear cases, linear programming finds feasible parameters, while Farkas certificates or optimization duals explain parameter conflicts and insufficient budgets.
 
-- Eight successful estimate routes are extracted from eight published papers, with one controlled mutation per route. Failed records are benchmark counterfactuals, not alleged errors in the source papers.
-- A 24-task synthetic experiment examines diagnostic feedback. A further experiment makes eight model calls across four source-backed tasks under two prompt conditions.
-- Both prompt conditions pass all four tasks. Deterministic rational-algebra and source-registry baselines also pass the same four tasks. These results do not establish an advantage over classical methods.
+An estimate chain also carries domains, function spaces, and boundary conditions. I separate abstract exponent calculations, concrete analytic instances, and global compatibility across local choices. The resulting diagnoses distinguish missing conditions, parameter conflicts, insufficient dissipation budgets, and targets unreachable within the rule library. Each points to a different next step: add an assumption, adjust parameters, introduce a cross-energy term, or look for a new inequality.
 
-The work demonstrates reasoning checks and failure diagnosis within a restricted rule contract. It does not claim a new PDE theorem. This is a research manuscript, pending full independent expert review, including independent checks of the PDE content and the correspondence between each encoding and its source.
+The prototype's replayable proofs and obstruction certificates apply to a finite, acyclic, explicitly enumerated rule contract. Candidates outside the library and unresolved analytic steps are recorded as `UNKNOWN` for further analysis.
+
+## Prototype and experiments
+
+- I extracted eight estimate routes from eight published PDE papers and constructed eight single-factor perturbations to test route replay and failure diagnosis.
+- I compared diagnostic feedback on 24 synthetic tasks and made eight model calls across four source-backed tasks under two prompt conditions.
+- Both prompt conditions and deterministic baselines reconstructed all four tasks. Exact solving within fixed templates provides a baseline for the next experiments, where I want to explore new representations, energy terms, and lemmas.
+
+## How models can help
+
+I also want models to attempt complete derivations, search broadly over candidates, and revise their approaches. Models can propose ideas freely; convex optimization and category theory help me organize, check, and explain those candidates.
+
+My next step is to combine broad exploration of energy functionals, variable transformations, and estimate routes with mathematical analysis and executable checks. During an internship, I plan to select analysis and PDE problems relevant to my background from collections such as ICM Conjectures, check the literature, and break them into intermediate propositions. I hope to make meaningful mathematical progress and see where models genuinely help.
 
 ## Full manuscript
 
-English PDF, 7 pages. Read online or download below.
+Research manuscript v2, English PDF, 7 pages. Full independent expert review of the manuscript and source encodings is pending.
 
 {{< pdf src="/files/proof-or-obstruction-v2.pdf" title="Proof or Obstruction, Draft v2" >}}

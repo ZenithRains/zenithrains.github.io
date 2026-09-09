@@ -6,4 +6,4 @@ layout: cv
 pdf: "/files/cv-ruiyi-zhang.pdf"
 ---
 
-View my current CV below, or open and download the PDF.
+My CV and research statement, in Chinese, 3 pages. It includes the motivation and methods behind my two PDE papers and the PDE energy-search project. Read online or download below.
