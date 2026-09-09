@@ -1,6 +1,6 @@
 ---
-title: Publications
-description: Academic publications and research outputs.
+title: Research
+description: Joint papers and research manuscripts.
 translationKey: publications
 layout: publications
 ---

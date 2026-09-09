@@ -1,3 +1,21 @@
-# Add verified academic work here. The homepage and Publications page read this
-# file automatically. Keep the list empty until publication details are supplied.
-publications: []
+publications:
+  - id: small-diffusivity
+    year: 2026
+    title: Small-Diffusivity Concentration for Fractional Aggregation with Cusp Attraction
+    authors: Ruiyi Zhang, Xiaoxin Zheng
+    status:
+      zh: 已投稿 Mathematical Methods in the Applied Sciences（Wiley），2026年。
+      en: Submitted to Mathematical Methods in the Applied Sciences (Wiley), 2026.
+    summary:
+      zh: 研究尖点吸引下分数阶聚集方程的小扩散质量集中。在径向对称及明确的观测时间、尺度条件下，手稿利用帐篷型截断矩、非局部跨边界分解与 Lorentz 空间估计，得到内禀尺度上时间积分质量的扩散参数一致正下界。
+      en: We study small-diffusivity mass concentration for a fractional aggregation equation with cusp attraction. Under radial symmetry and explicit observation-time and scale conditions, the manuscript establishes a diffusivity-uniform positive lower bound for time-integrated mass at the intrinsic scale, using a tent-moment argument, nonlocal boundary decomposition, and Lorentz-space estimates.
+  - id: nutrient-taxis
+    year: 2026
+    title: Time-Uniform Boundedness and Large-Time Behavior for a Planar Doubly Degenerate Nutrient-Taxis System
+    authors: Ruiyi Zhang, Xiaoxin Zheng
+    status:
+      zh: 手稿打磨中，尚未投稿，2026年。
+      en: Manuscript in preparation; not yet submitted, 2026.
+    summary:
+      zh: 研究二维双退化趋营养系统的全局有界弱解、正时间正则性和长时间行为。当前手稿结合补偿型熵估计、半径一致不等式与内禀矩迭代推进先验估计和弱解构造。
+      en: This ongoing work concerns global bounded weak solutions, positive-time regularity, and large-time behavior for a planar doubly degenerate nutrient-taxis system. The current approach combines compensated entropy estimates, radius-uniform inequalities, and an intrinsic moment iteration.

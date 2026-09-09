@@ -1,0 +1,10 @@
+<ol class="research-list">
+  {{ range hugo.Data.publications.publications }}
+    <li id="{{ .id }}"><article>
+      <h3>{{ .title }}</h3>
+      <p class="research-authors">{{ .authors }}</p>
+      <p class="research-status">{{ index .status $.Lang }}</p>
+      <p class="research-summary">{{ index .summary $.Lang }}</p>
+    </article></li>
+  {{ end }}
+</ol>

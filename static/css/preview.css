@@ -49,6 +49,14 @@ html:lang(zh-CN) .profile-copy h1 { font-family: "Ruiyi Name Kai", "Kaiti SC", K
 .article-header .article-meta { margin-bottom: 14px; }
 .prose h2 { font-size: 23px; }
 .empty-state { border: 0; padding: 8px 0; background: transparent; }
+.internship-note { margin: 16px 0 0; font-size: 14px; line-height: 1.75; color: var(--muted); }
+.research-list { list-style: none; margin: 0; padding: 0; }
+.research-list li { padding: 0 0 28px; }
+.research-list li + li { padding-top: 22px; border-top: 1px solid var(--line); }
+.research-list h3 { margin: 0; font-size: 18px; line-height: 1.5; font-weight: 600; overflow-wrap: break-word; }
+.research-authors { margin: 8px 0 0; font-size: 14px; color: var(--muted); }
+.research-status { margin: 5px 0 0; font-size: 14px; color: var(--accent); }
+.research-summary { margin: 12px 0 0; font-size: 15px; line-height: 1.8; }
 @media (max-width: 820px) {
   .header-inner { grid-template-columns: auto 1fr auto; }
   .nav-toggle { display: none; }

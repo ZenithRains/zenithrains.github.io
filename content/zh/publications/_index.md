@@ -1,6 +1,6 @@
 ---
-title: 学术成果
-description: 论文与其他研究成果。
+title: 当前研究
+description: 合作论文与研究手稿。
 translationKey: publications
 layout: publications
 ---
