@@ -52,6 +52,7 @@
 
   {{ partial "research-notes.html" . }}
   {{ $writing := where .Site.RegularPages "Section" "in" .Site.Params.mainSections }}
+  {{ $writing = where $writing "Params.researchShowcase" "ne" true }}
   {{ if $writing }}
     <section class="home-section shell-home">
       <div class="section-heading">
