@@ -45,7 +45,7 @@
   </section>
   <section class="home-section shell-home">
     <div class="section-heading"><h2>{{ if eq .Lang "zh" }}AI 与数学研究{{ else }}AI and mathematical research{{ end }}</h2></div>
-    <div class="prose now-copy">{{ .Content }}</div>
+    <div class="prose now-copy"><p>{{ if eq .Lang "zh" }}我用大模型探索 PDE 推导与能量估计，再检查假设、参数和论证能否闭合。目前关注数学推理评测，以及怎样把开放问题拆成可检验的中间命题。{{ else }}I use models to explore PDE arguments and energy estimates, then check their assumptions, parameters, and whether the argument closes. My current interests include mathematical reasoning evaluation and breaking open problems into testable intermediate propositions.{{ end }}</p><a href="{{ "/notes/2026/07/proof-or-obstruction/" | relLangURL }}">{{ if eq .Lang "zh" }}研究思路与进展{{ else }}Approach and progress{{ end }}</a></div>
   </section>
 
   {{ $writing := where .Site.RegularPages "Section" "in" .Site.Params.mainSections }}

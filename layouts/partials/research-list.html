@@ -1,11 +1,14 @@
-<ol class="research-list">
+<ul class="research-list">
   {{ range $i, $work := hugo.Data.publications.publications }}
     <li id="{{ .id }}"><article>
-      <div class="research-index" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</div>
       <div class="research-entry">
-      {{ if $.IsHome }}<h3><a href="{{ if .page }}{{ .page | relLangURL }}{{ else }}{{ "/publications/" | relLangURL }}#{{ .id }}{{ end }}">{{ if eq $.Lang "zh" }}{{ .shortTitle }}{{ else }}{{ .title }}{{ end }}</a></h3>{{ if eq $.Lang "zh" }}<p class="research-original-title" lang="en">{{ .title }}</p>{{ end }}{{ else }}<h2>{{ .title }}</h2>{{ end }}
+      {{ if $.IsHome }}<h3><a href="{{ if .page }}{{ .page | relLangURL }}{{ else }}{{ "/publications/" | relLangURL }}#{{ .id }}{{ end }}">{{ if eq $.Lang "zh" }}{{ .shortTitle }}{{ else }}{{ .title }}{{ end }}</a></h3>{{ else }}<h2>{{ .title }}</h2>{{ end }}
+      {{ if $.IsHome }}
+      <p class="research-meta">{{ .authors }} <span aria-hidden="true">·</span> <span class="research-status">{{ if eq .id "small-diffusivity" }}{{ if eq $.Lang "zh" }}已投稿{{ else }}Submitted{{ end }}{{ else if eq .id "nutrient-taxis" }}{{ if eq $.Lang "zh" }}手稿打磨中{{ else }}Work in progress{{ end }}{{ else }}{{ if eq $.Lang "zh" }}研究手稿 v2{{ else }}Research manuscript v2{{ end }}{{ end }}</span></p>
+      {{ else }}
       <p class="research-authors">{{ .authors }}</p>
       <p class="research-status">{{ index .status $.Lang }}</p>
+      {{ end }}
       {{ if $.IsHome }}<p class="research-summary">{{ index .summary $.Lang }}</p>{{ else }}
       <dl class="research-facts">
         <div><dt>{{ if eq $.Lang "zh" }}核心问题{{ else }}Question{{ end }}</dt><dd>{{ index .question $.Lang }}</dd></div>
@@ -17,4 +20,4 @@
       </div>
     </article></li>
   {{ end }}
-</ol>
+</ul>
