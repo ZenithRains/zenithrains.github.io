@@ -1,0 +1,3 @@
+{{ define "main" }}
+<section class="shell-narrow update-detail"><h1 class="sr-only">{{ .Title }}</h1><p><a href="{{ "/updates/" | relLangURL }}">← Updates</a></p><div class="updates-feed">{{ partial "update-card.html" . }}</div></section>
+{{ end }}
