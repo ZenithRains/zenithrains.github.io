@@ -50,7 +50,7 @@
     let expanded = false;
     const measure = () => {
       body.classList.remove('is-collapsed');
-      const long = body.scrollHeight > 180 || Boolean(body.querySelector('.katex-display'));
+      const long = body.scrollHeight > 161 || Boolean(body.querySelector('.katex-display'));
       const canCollapse = long && !card.closest('.update-detail');
       expand.hidden = !canCollapse;
       body.classList.toggle('is-collapsed', canCollapse && !expanded);
@@ -58,7 +58,7 @@
     expand.addEventListener('click', () => {
       expanded = !expanded;
       expand.setAttribute('aria-expanded', String(expanded));
-      expand.textContent = expanded ? (isChinese ? '收起' : 'Show less') : (isChinese ? '展开' : 'Show more');
+      expand.textContent = expanded ? (isChinese ? '收起' : 'Show less') : (isChinese ? '显示更多' : 'Show more');
       measure();
     });
     measure();
@@ -71,17 +71,20 @@
       }
     }).observe(card);
     const copy = card.querySelector('.update-copy');
-    if (navigator.clipboard?.writeText) {
+    if (navigator.share || navigator.clipboard?.writeText) {
       copy.hidden = false;
       copy.addEventListener('click', async () => {
         try {
-          await navigator.clipboard.writeText(copy.dataset.url);
-          copy.textContent = isChinese ? '已复制' : 'Copied';
-          card.querySelector('.update-feedback').textContent = isChinese ? '链接已复制' : 'Link copied';
-          window.setTimeout(() => { copy.textContent = isChinese ? '复制链接' : 'Copy link'; }, 1800);
-        } catch {
-          copy.hidden = true;
-          card.querySelector('.update-feedback').textContent = isChinese ? '请使用单条链接' : 'Use the permalink';
+          if (navigator.share) {
+            await navigator.share({ url: copy.dataset.url });
+          } else {
+            await navigator.clipboard.writeText(copy.dataset.url);
+            card.querySelector('.update-feedback').textContent = isChinese ? '已复制' : 'Copied';
+          }
+        } catch (error) {
+          if (error.name !== 'AbortError') card.querySelector('.update-feedback').textContent = isChinese ? '可点击日期打开后分享' : 'Open the date link to share';
+        } finally {
+          window.setTimeout(() => { card.querySelector('.update-feedback').textContent = ''; }, 2400);
         }
       });
     }
