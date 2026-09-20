@@ -8,7 +8,7 @@
 .update-body.prose { font-size:16px; line-height:1.6; overflow-wrap:anywhere; text-align:left; }
 .update-body.prose p { margin:7px 0 10px; }
 .update-body.prose strong { font-weight:500; }
-.update-body.is-collapsed { max-height:161px; overflow:hidden; }
+.update-body.is-collapsed { display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:6; overflow:hidden; }
 .update-body.is-collapsed .katex-display { display:none; }
 .update-expand,.update-copy { border:0; background:none; padding:4px 0; font:inherit; font-size:13px; color:var(--accent); cursor:pointer; }
 .update-expand[hidden],.update-copy[hidden] { display:none; }
