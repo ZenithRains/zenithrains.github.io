@@ -1,6 +1,6 @@
 {{ define "main" }}
-<header class="page-header shell-narrow"><h1>Updates</h1></header>
-<section class="shell-narrow content-section updates-feed" aria-label="Updates">
+<header class="page-header shell-narrow"><h1>{{ .Title }}</h1></header>
+<section class="shell-narrow content-section updates-feed" aria-label="{{ .Title }}">
   {{ $pager := .Paginate .RegularPages.ByDate.Reverse }}
   {{ range $pager.Pages }}{{ partial "update-card.html" . }}{{ end }}
   {{ if gt $pager.TotalPages 1 }}<nav class="updates-pagination" aria-label="{{ if eq .Lang "zh" }}短讯分页{{ else }}Updates pagination{{ end }}">{{ if $pager.HasPrev }}<a href="{{ $pager.Prev.URL }}">{{ if eq .Lang "zh" }}较新{{ else }}Newer{{ end }}</a>{{ end }}{{ if $pager.HasNext }}<a href="{{ $pager.Next.URL }}">{{ if eq .Lang "zh" }}更早{{ else }}Older{{ end }}</a>{{ end }}</nav>{{ end }}

@@ -13,7 +13,7 @@
       <a href="{{ "/about/" | relLangURL }}">{{ if eq .Lang "zh" }}关于{{ else }}About{{ end }}</a>
       <a href="{{ "/publications/" | relLangURL }}">{{ if eq .Lang "zh" }}研究{{ else }}Research{{ end }}</a>
       <a href="{{ "/writing/" | relLangURL }}">{{ if eq .Lang "zh" }}写作{{ else }}Writing{{ end }}</a>
-      <a href="{{ "/updates/" | relLangURL }}">Updates</a>
+      <a href="{{ "/updates/" | relLangURL }}">{{ if eq .Lang "zh" }}动态{{ else }}Updates{{ end }}</a>
     </nav>
 
     <div class="header-actions">

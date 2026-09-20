@@ -42,7 +42,7 @@
   {{ $updates := where .Site.RegularPages "Section" "updates" }}
   {{ if $updates }}
   <section class="home-section shell-home">
-    <div class="section-heading"><h2>Updates</h2><a href="{{ "/updates/" | relLangURL }}">{{ if eq .Lang "zh" }}查看全部{{ else }}View all{{ end }}</a></div>
+    <div class="section-heading"><h2>{{ if eq .Lang "zh" }}动态{{ else }}Updates{{ end }}</h2><a href="{{ "/updates/" | relLangURL }}">{{ if eq .Lang "zh" }}查看全部{{ else }}View all{{ end }}</a></div>
     <div class="updates-feed">{{ range first 3 $updates.ByDate.Reverse }}{{ partial "update-card.html" . }}{{ end }}</div>
   </section>
   {{ end }}
