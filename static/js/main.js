@@ -43,6 +43,50 @@
     });
   }
 
+  const isChinese = document.documentElement.lang.startsWith('zh');
+  document.querySelectorAll('.update-card').forEach((card) => {
+    const body = card.querySelector('.update-body');
+    const expand = card.querySelector('.update-expand');
+    let expanded = false;
+    const measure = () => {
+      body.classList.remove('is-collapsed');
+      const long = body.scrollHeight > 180 || Boolean(body.querySelector('.katex-display'));
+      const canCollapse = long && !card.closest('.update-detail');
+      expand.hidden = !canCollapse;
+      body.classList.toggle('is-collapsed', canCollapse && !expanded);
+    };
+    expand.addEventListener('click', () => {
+      expanded = !expanded;
+      expand.setAttribute('aria-expanded', String(expanded));
+      expand.textContent = expanded ? (isChinese ? '收起' : 'Show less') : (isChinese ? '展开' : 'Show more');
+      measure();
+    });
+    measure();
+    document.fonts?.ready.then(measure);
+    let lastWidth = card.clientWidth;
+    new ResizeObserver(() => {
+      if (card.clientWidth !== lastWidth) {
+        lastWidth = card.clientWidth;
+        measure();
+      }
+    }).observe(card);
+    const copy = card.querySelector('.update-copy');
+    if (navigator.clipboard?.writeText) {
+      copy.hidden = false;
+      copy.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(copy.dataset.url);
+          copy.textContent = isChinese ? '已复制' : 'Copied';
+          card.querySelector('.update-feedback').textContent = isChinese ? '链接已复制' : 'Link copied';
+          window.setTimeout(() => { copy.textContent = isChinese ? '复制链接' : 'Copy link'; }, 1800);
+        } catch {
+          copy.hidden = true;
+          card.querySelector('.update-feedback').textContent = isChinese ? '请使用单条链接' : 'Use the permalink';
+        }
+      });
+    }
+  });
+
   const filterButtons = [...document.querySelectorAll('.filter-button')];
   const publications = [...document.querySelectorAll('.publication')];
   filterButtons.forEach((button) => {
