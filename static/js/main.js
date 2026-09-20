@@ -43,53 +43,6 @@
     });
   }
 
-  const isChinese = document.documentElement.lang.startsWith('zh');
-  document.querySelectorAll('.update-card').forEach((card) => {
-    const body = card.querySelector('.update-body');
-    const expand = card.querySelector('.update-expand');
-    let expanded = false;
-    const measure = () => {
-      body.classList.remove('is-collapsed');
-      const long = body.scrollHeight > 161 || Boolean(body.querySelector('.katex-display'));
-      const canCollapse = long && !card.closest('.update-detail');
-      expand.hidden = !canCollapse;
-      body.classList.toggle('is-collapsed', canCollapse && !expanded);
-    };
-    expand.addEventListener('click', () => {
-      expanded = !expanded;
-      expand.setAttribute('aria-expanded', String(expanded));
-      expand.textContent = expanded ? (isChinese ? '收起' : 'Show less') : (isChinese ? '显示更多' : 'Show more');
-      measure();
-    });
-    measure();
-    document.fonts?.ready.then(measure);
-    let lastWidth = card.clientWidth;
-    new ResizeObserver(() => {
-      if (card.clientWidth !== lastWidth) {
-        lastWidth = card.clientWidth;
-        measure();
-      }
-    }).observe(card);
-    const copy = card.querySelector('.update-copy');
-    if (navigator.share || navigator.clipboard?.writeText) {
-      copy.hidden = false;
-      copy.addEventListener('click', async () => {
-        try {
-          if (navigator.share) {
-            await navigator.share({ url: copy.dataset.url });
-          } else {
-            await navigator.clipboard.writeText(copy.dataset.url);
-            card.querySelector('.update-feedback').textContent = isChinese ? '已复制' : 'Copied';
-          }
-        } catch (error) {
-          if (error.name !== 'AbortError') card.querySelector('.update-feedback').textContent = isChinese ? '可点击日期打开后分享' : 'Open the date link to share';
-        } finally {
-          window.setTimeout(() => { card.querySelector('.update-feedback').textContent = ''; }, 2400);
-        }
-      });
-    }
-  });
-
   const filterButtons = [...document.querySelectorAll('.filter-button')];
   const publications = [...document.querySelectorAll('.publication')];
   filterButtons.forEach((button) => {
