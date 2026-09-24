@@ -5,6 +5,8 @@ slug: fuji-wind-and-rain
 translationKey: fuji-wind-and-rain
 description: "A climb before dawn on September 6, 2026, as far as Kusushi Shrine, followed by a long descent in wind and rain."
 tags: [Travel, Japan, Mount Fuji, Hiking]
+aliases:
+  - /notes/2026/09/fuji-wind-and-rain/
 math: false
 draft: false
 ---

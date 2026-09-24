@@ -5,6 +5,8 @@ slug: fuji-wind-and-rain
 translationKey: fuji-wind-and-rain
 description: "2026年9月6日凌晨登上富士山，在风雨中走到久须志神社，然后下撤。"
 tags: [旅行, 日本, 富士山, 登山]
+aliases:
+  - /notes/2026/09/fuji-wind-and-rain/
 math: false
 draft: false
 ---
