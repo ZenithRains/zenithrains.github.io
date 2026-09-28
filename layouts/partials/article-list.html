@@ -1,12 +1,13 @@
 {{ $pages := .pages }}
 {{ $lang := .lang }}
 {{ $showSection := .showSection | default false }}
+{{ $heading := printf "h%d" (.headingLevel | default 2) }}
 {{ if $pages }}
   <ol class="article-list">
     {{ range $pages }}
       <li>
         <article class="article-card">
-          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          {{ printf "<%s class=\"article-card-title\">" $heading | safeHTML }}<a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ printf "</%s>" $heading | safeHTML }}
           <div class="article-meta">
             <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
             {{ if $showSection }}<span class="meta-divider">/</span><a class="meta-section" href="{{ .CurrentSection.RelPermalink }}">{{ .CurrentSection.Title }}</a>{{ end }}

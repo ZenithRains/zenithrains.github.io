@@ -3,11 +3,21 @@
   const themeButton = document.querySelector('.theme-toggle');
   const navButton = document.querySelector('.nav-toggle');
   const nav = document.querySelector('.site-nav');
+  const syncTheme = () => {
+    const dark = root.dataset.theme === 'dark';
+    themeButton?.setAttribute('aria-pressed', String(dark));
+    document.querySelectorAll('meta[name="theme-color"]').forEach((meta) => {
+      meta.removeAttribute('media');
+      meta.content = dark ? '#121212' : '#ffffff';
+    });
+  };
+  syncTheme();
 
   themeButton?.addEventListener('click', () => {
     const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
     root.dataset.theme = next;
     localStorage.setItem('color-theme', next);
+    syncTheme();
   });
 
   navButton?.addEventListener('click', () => {
@@ -27,6 +37,7 @@
   systemTheme.addEventListener('change', (event) => {
     if (!localStorage.getItem('color-theme')) {
       root.dataset.theme = event.matches ? 'dark' : 'light';
+      syncTheme();
     }
   });
 
@@ -42,6 +53,37 @@
       throwOnError: false
     });
   }
+
+  document.querySelectorAll('.prose table').forEach((table) => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'table-scroll';
+    table.before(wrapper);
+    wrapper.append(table);
+  });
+  const refreshScrollRegions = () => {
+    const chinese = root.lang.startsWith('zh');
+    const regions = [...document.querySelectorAll('.table-scroll, .prose pre, .katex-display')]
+      .map((region) => ({ region, overflows: region.scrollWidth > region.clientWidth + 1 }));
+    regions.forEach(({ region, overflows }) => {
+      if (overflows) {
+        region.tabIndex = 0;
+        region.setAttribute('role', 'region');
+        const kind = region.matches('.table-scroll') ? (chinese ? '表格' : 'Table')
+          : region.matches('pre') ? (chinese ? '代码' : 'Code') : (chinese ? '公式' : 'Equation');
+        region.setAttribute('aria-label', chinese ? `${kind}，可横向滚动` : `${kind}, horizontally scrollable`);
+      } else {
+        region.removeAttribute('tabindex');
+        region.removeAttribute('role');
+        region.removeAttribute('aria-label');
+      }
+    });
+  };
+  document.fonts.ready.then(refreshScrollRegions);
+  let resizeFrame;
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(resizeFrame);
+    resizeFrame = requestAnimationFrame(refreshScrollRegions);
+  });
 
   const filterButtons = [...document.querySelectorAll('.filter-button')];
   const publications = [...document.querySelectorAll('.publication')];

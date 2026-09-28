@@ -30,12 +30,12 @@
   })();
 </script>
 <link rel="stylesheet" href="{{ "vendor/katex/katex.min.css" | relURL }}">
-<link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
-<link rel="stylesheet" href="{{ "css/preview.css" | relURL }}">
-<link rel="stylesheet" href="{{ "css/research-refresh.css" | relURL }}">
+{{ range slice "css/main.css" "css/preview.css" "css/research-refresh.css" }}
+<link rel="stylesheet" href="{{ . | relURL }}?v={{ readFile (printf "static/%s" .) | sha256 | truncate 12 "" }}">
+{{ end }}
 <script defer src="{{ "vendor/katex/katex.min.js" | relURL }}"></script>
 <script defer src="{{ "vendor/katex/contrib/auto-render.min.js" | relURL }}"></script>
-<script defer src="{{ "js/main.js" | relURL }}"></script>
+<script defer src="{{ "js/main.js" | relURL }}?v={{ readFile "static/js/main.js" | sha256 | truncate 12 "" }}"></script>
 {{ if .IsHome }}
   <title>{{ .Site.Title }}</title>
 {{ else }}

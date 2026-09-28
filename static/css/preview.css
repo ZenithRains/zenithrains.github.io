@@ -1,11 +1,12 @@
 /* Quiet personal homepage. */
 :root { --content: 780px; --home: 780px; --narrow: 720px; --accent: #28639c; --muted: #686b70; }
 :root[data-theme="dark"] { --accent: #90b9de; --muted: #a6aaaf; }
-body, html:lang(zh-CN) body { font-size: 16px; line-height: 1.8; }
+body, html:lang(zh-CN) body { font-size: 1rem; line-height: 1.8; }
 .site-header { border: 0; }
 .header-inner { min-height: 100px; gap: 24px; border-bottom: 1px solid var(--line); }
 .site-mark { width: 32px; height: 32px; }
 .site-nav { gap: 26px; }
+.site-nav a, .language-link { min-height:44px; display:inline-flex; align-items:center; }
 .site-nav a, .language-link, .footer-links a { font-size: 14px; font-weight: 400; }
 .theme-toggle { border: 0; }
 .profile-hero { padding: 56px 0 38px; }
@@ -18,7 +19,7 @@ html:lang(zh-CN) .profile-copy h1 { font-family: var(--system-font); font-size: 
 .profile-copy h1 { font-weight: 500; }
 .profile-intro, html:lang(zh-CN) .profile-intro { font-size: 16px; line-height: 1.85; margin-top: 20px; }
 .profile-links { gap: 0; margin-top: 12px; }
-.profile-icon-link { flex-basis: 35px; width: 35px; height: 40px; }
+.profile-icon-link { flex-basis: 44px; width: 44px; height: 44px; }
 .profile-icon-link svg { width: 19px; height: 19px; }
 .profile-icon-link .icon-xiaohongshu { width: 25px; }
 .profile-icon-link .cv-icon { font-size: 16px; }
@@ -32,21 +33,22 @@ html:lang(zh-CN) .profile-copy h1 { font-family: var(--system-font); font-size: 
 .now-copy { max-width: 690px; }
 .now-copy p { margin: 0 0 14px; }
 .now-copy a { color: var(--accent); text-decoration-color: var(--line); }
-.article-card, .article-list > li:last-child .article-card { border: 0; padding: 8px 0 24px; }
-.article-card h2 { font-size: 17px; font-weight: 500; }
-.article-card h2 a { color: var(--accent); }
-.article-card p { font-size: 14px; margin-top: 7px; }
+.article-card, .article-list > li:last-child .article-card { border: 0; padding: 0 0 28px; }
+.article-card .article-card-title { margin:0; font-size:var(--text-list); line-height:1.5; font-weight:500; overflow-wrap:anywhere; }
+.article-card-title a { color:var(--ink); text-decoration:none; }
+.article-card-title a:hover { color:var(--accent); text-decoration:underline; }
+.article-card p { font-size:1rem; margin-top:8px; line-height:1.75; }
 .article-card .inline-tags { display: none; }
 .article-card .article-meta { margin-top: 4px; }
 .site-footer { border: 0; margin-top: 26px; }
 .footer-inner { border-top: 1px solid var(--line); min-height: 90px; }
 .page-header { padding: 50px 0 24px; }
-.page-header h1, .article-header h1 { font-size: 30px; line-height: 1.45; }
+.page-header h1, .article-header h1 { font-size: 1.875rem; line-height: 1.4; text-wrap:balance; overflow-wrap:anywhere; }
 .page-description, .page-lead, .article-deck { font-size: 16px; line-height: 1.8; }
 .article-page { padding: 48px 0 60px; }
 .article-header { margin-bottom: 30px; }
 .article-header .article-meta { margin-bottom: 14px; }
-.prose h2 { font-size: 23px; }
+.prose h2 { font-size: 1.4375rem; }
 .empty-state { border: 0; padding: 8px 0; background: transparent; }
 .internship-note { margin: 16px 0 0; font-size: 14px; line-height: 1.75; color: var(--muted); }
 .research-list { list-style: none; margin: 0; padding: 0; }
@@ -71,7 +73,7 @@ html:lang(zh-CN) .profile-copy h1 { font-family: var(--system-font); font-size: 
   .site-nav a { font-size: 13px; }
   .header-actions { gap: 2px; }
   .language-link { font-size: 12px; }
-  .theme-toggle { width: 30px; }
+  .theme-toggle { width: 44px; }
   .profile-hero { padding: 34px 0 12px; }
   .profile-grid { grid-template-columns: 1fr; gap: 24px; }
   .profile-portrait { grid-column: 1; grid-row: 1; justify-self: start; }
@@ -84,6 +86,6 @@ html:lang(zh-CN) .profile-copy h1 { font-family: var(--system-font); font-size: 
   .home-section { padding: 26px 0 16px; }
   .section-heading { margin-bottom: 16px; }
   .section-heading h2 { font-size: 19px; }
-  .article-header h1, .page-header h1 { font-size: 27px; }
+  .article-header h1, .page-header h1 { font-size: 1.6875rem; }
   .footer-inner { flex-direction: row; align-items: center; justify-content: space-between; min-height: 88px; }
 }

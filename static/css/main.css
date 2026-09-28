@@ -13,7 +13,16 @@
   --home: 860px;
   --narrow: 760px;
   --system-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --reading: 40rem;
+  --text-body: 1.0625rem;
+  --text-meta: 0.8125rem;
+  --text-list: 1.125rem;
+  --space-section: 2rem;
 }
+
+html:lang(zh-CN) { --reading: 42.5rem; }
+html[data-theme="light"] { color-scheme: light; }
+html[data-theme="dark"] { color-scheme: dark; }
 
 :root[data-theme="dark"] {
   --bg: #121212;
@@ -94,6 +103,7 @@ textarea {
 button,
 a {
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 img,
@@ -202,13 +212,13 @@ video {
 }
 
 .site-nav a:hover,
-.site-nav a[aria-current="page"],
+.site-nav a[aria-current],
 .language-link:hover,
 .footer-links a:hover {
   color: var(--ink);
 }
 
-.site-nav a[aria-current="page"] {
+.site-nav a[aria-current] {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 7px;
@@ -222,8 +232,8 @@ video {
 
 .theme-toggle,
 .nav-toggle {
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   display: inline-grid;
   place-items: center;
@@ -445,7 +455,7 @@ html:lang(zh-CN) .profile-intro {
 }
 
 .button {
-  min-height: 42px;
+  min-height: 44px;
   padding: 9px 18px;
   display: inline-flex;
   align-items: center;
@@ -498,6 +508,7 @@ html:lang(zh-CN) .profile-intro {
   align-items: baseline;
   justify-content: space-between;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .section-heading h2,
@@ -623,7 +634,7 @@ html:lang(zh-CN) .page-lead {
 .article-meta {
   font-family: var(--system-font);
   color: var(--muted);
-  font-size: 12px;
+  font-size: var(--text-meta);
   font-variant-numeric: tabular-nums;
   letter-spacing: normal;
 }
@@ -724,7 +735,8 @@ html:lang(zh-CN) .page-lead {
 }
 
 .prose {
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
+  min-width: 0;
 }
 
 .prose > *:first-child {
@@ -734,7 +746,7 @@ html:lang(zh-CN) .page-lead {
 .prose h2,
 .prose h3,
 .prose h4 {
-  margin-top: 2.2em;
+  margin-top: 1.8em;
   margin-bottom: 0.75em;
   font-weight: 600;
   letter-spacing: normal;
@@ -746,24 +758,33 @@ html:lang(zh-CN) .page-lead {
 }
 
 .prose h3 {
-  font-size: 23px;
+  font-size: 1.25rem;
 }
+
+.prose h4 { font-size: 1.0625rem; }
+.prose :is(h2, h3, h4) { scroll-margin-top: 1.5rem; text-wrap: balance; }
+.article-page.shell-narrow { max-width: var(--reading); }
+.prose :is(ul, ol) { padding-inline-start: 1.5em; }
+.prose li + li { margin-top: 0.4em; }
+.prose figure { margin-inline: 0; }
+.prose figcaption { margin-top: 0.5rem; color: var(--muted); font-size: var(--text-meta); }
+.prose .footnotes { margin-top: 2rem; font-size: 0.9375rem; }
 
 .prose p,
 .prose ul,
 .prose ol,
 .prose blockquote {
-  margin-block: 1.15em;
+  margin-block: 1em;
 }
 
 .article-body {
-  font-size: 17px;
-  line-height: 1.65;
+  font-size: var(--text-body);
+  line-height: 1.75;
 }
 
 html:lang(zh-CN) .article-body {
-  font-size: 17px;
-  line-height: 1.8;
+  font-size: var(--text-body);
+  line-height: 1.85;
 }
 
 .article-body a,
@@ -802,6 +823,13 @@ html:lang(zh-CN) .article-body {
   font-size: 14px;
 }
 
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  margin-block: 1.5em;
+}
+.table-scroll table { min-width: 30rem; }
+
 .prose th,
 .prose td {
   padding: 10px 12px;
@@ -828,6 +856,7 @@ html:lang(zh-CN) .article-body {
   color: var(--ink);
   font-weight: 700;
   cursor: pointer;
+  min-height: 1.5rem;
 }
 
 .toc ul {
@@ -1339,16 +1368,6 @@ html:lang(zh-CN) .map-node text {
 
   .article-page {
     padding-block: 64px 80px;
-  }
-
-  .article-body {
-    font-size: 17px;
-    line-height: 1.65;
-  }
-
-  html:lang(zh-CN) .article-body {
-    font-size: 17px;
-    line-height: 1.8;
   }
 
   .section-heading {
