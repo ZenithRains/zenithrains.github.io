@@ -1,7 +1,7 @@
 ---
 title: Home
 translationKey: home
-intro: "PhD student in Applied Mathematics at Beihang University. I began my doctoral studies in 2024 and expect to graduate in 2029. My research concerns nonlinear partial differential equations, particularly chemotaxis, aggregation-diffusion, and degenerate diffusion models."
+intro: "PhD student in Applied Mathematics at Beihang University. I study nonlinear partial differential equations, especially chemotaxis, aggregation-diffusion, and degenerate diffusion models."
 availability: "I joined ByteDance on September 28, 2026, and am interning in Data Solutions and Deployment within the AI Data & Safety group."
 personal: "I enjoy mountaineering and calligraphy, and I play the erhu. I am reading Marcus Aurelius's Meditations and have tried using GPT to translate passages from it."
 ---

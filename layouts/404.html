@@ -1,8 +1,8 @@
 {{ define "main" }}
-  <section class="not-found shell-narrow">
+  <section class="not-found shell-narrow" aria-labelledby="not-found-title">
     <p class="eyebrow">404</p>
-    <h1>{{ if eq .Lang "zh" }}页面不存在{{ else }}Page not found{{ end }}</h1>
-    <p>{{ if eq .Lang "zh" }}这个链接可能已经移动，或者从未存在。{{ else }}The link may have moved, or the page may never have existed.{{ end }}</p>
-    <a class="button button-primary" href="{{ .Site.Home.RelPermalink }}">{{ if eq .Lang "zh" }}返回首页{{ else }}Return home{{ end }}</a>
+    <h1 id="not-found-title">{{ if eq .Lang "zh" }}页面不存在{{ else }}Page not found{{ end }}</h1>
+    <p>{{ if eq .Lang "zh" }}这个链接可能已经移动。可以返回首页，或从研究与写作继续浏览。{{ else }}This link may have moved. Return to the homepage, or continue exploring research and writing.{{ end }}</p>
+    <div class="page-actions"><a class="button button-primary" href="{{ .Site.Home.RelPermalink }}">{{ if eq .Lang "zh" }}返回首页{{ else }}Return home{{ end }}</a><a class="text-link" href="{{ "/writing/" | relLangURL }}">{{ if eq .Lang "zh" }}浏览写作{{ else }}Browse writing{{ end }} <span aria-hidden="true">→</span></a></div>
   </section>
 {{ end }}

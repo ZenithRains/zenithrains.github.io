@@ -1,10 +1,39 @@
 {{ define "main" }}
   {{ $writing := where .Site.RegularPages "Section" "in" .Site.Params.mainSections }}
   <header class="page-header shell">
+    <p class="eyebrow">{{ if eq .Lang "zh" }}文字与文献{{ else }}Words & documents{{ end }}</p>
     <h1>{{ .Title }}</h1>
+    <p class="page-lead">{{ if eq .Lang "zh" }}研究札记、个人随笔，以及文献整理与译作。{{ else }}Research notes, personal essays, and work with historical texts.{{ end }}</p>
+    {{ with .Content }}<div class="page-description prose">{{ . }}</div>{{ end }}
   </header>
-
-  <section class="shell content-section">
-    {{ partial "article-list.html" (dict "pages" $writing.ByDate.Reverse "lang" .Lang "showSection" true) }}
+  <section class="shell content-section" data-writing-collection>
+    <nav class="filter-nav" data-writing-filters hidden aria-label="{{ if eq .Lang "zh" }}写作分类{{ else }}Writing categories{{ end }}">
+      <button type="button" data-writing-filter="all" aria-pressed="true" aria-controls="writing-archive">{{ if eq .Lang "zh" }}全部{{ else }}All{{ end }}</button>
+      <button type="button" data-writing-filter="research" aria-pressed="false" aria-controls="writing-archive">{{ if eq .Lang "zh" }}研究札记{{ else }}Research notes{{ end }}</button>
+      <button type="button" data-writing-filter="essays" aria-pressed="false" aria-controls="writing-archive">{{ if eq .Lang "zh" }}随笔{{ else }}Essays{{ end }}</button>
+      <button type="button" data-writing-filter="documents" aria-pressed="false" aria-controls="writing-archive">{{ if eq .Lang "zh" }}文献与译作{{ else }}Documents & translations{{ end }}</button>
+    </nav>
+    <p class="sr-only" role="status" data-writing-status></p>
+    <div id="writing-archive">
+      {{ partial "article-list.html" (dict "pages" $writing.ByDate.Reverse "lang" .Lang "showSection" true) }}
+      {{ $external := where hugo.Data.writing_features.features "url" "ne" nil }}
+      {{ with $external }}
+        <section class="external-writing" data-writing-kind="documents" aria-labelledby="external-writing-heading">
+          <div class="section-heading"><h2 id="external-writing-heading">{{ if eq $.Lang "zh" }}外站作品{{ else }}Published elsewhere{{ end }}</h2></div>
+          <ol class="article-list">
+            {{ range . }}
+              <li data-writing-kind="{{ .kind | default "documents" }}">
+                <article class="article-card">
+                  <h3 class="article-card-title"><a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ index .title $.Lang }} <span aria-hidden="true">↗</span></a></h3>
+                  <div class="article-meta">{{ with .date }}<time datetime="{{ . }}">{{ . }}</time><span class="meta-divider" aria-hidden="true">·</span>{{ end }}<span>{{ index .type $.Lang }}</span>{{ with .authors }}<span class="meta-divider" aria-hidden="true">·</span><span>{{ index . $.Lang }}</span>{{ end }}<span class="meta-divider" aria-hidden="true">·</span><span>{{ (urls.Parse .url).Host }}</span></div>
+                  <p class="article-card-summary">{{ index .description $.Lang }}</p>
+                </article>
+              </li>
+            {{ end }}
+          </ol>
+        </section>
+      {{ end }}
+    </div>
+    <p class="empty-state" data-writing-empty hidden>{{ if eq .Lang "zh" }}这个分类的内容正在整理中。{{ else }}Writing in this category will appear here soon.{{ end }}</p>
   </section>
 {{ end }}

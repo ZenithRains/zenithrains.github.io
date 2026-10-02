@@ -1,8 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
+<meta name="theme-color">
 <link rel="icon" href="{{ "/favicon.ico" | relURL }}" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="{{ "/favicon-32x32.png" | relURL }}">
 <link rel="icon" type="image/png" sizes="16x16" href="{{ "/favicon-16x16.png" | relURL }}">
@@ -24,20 +23,33 @@
 {{ end }}
 <script>
   (() => {
-    const saved = localStorage.getItem('color-theme');
+    let saved = 'auto';
+    try { saved = localStorage.getItem('color-theme') || 'auto'; } catch {}
+    if (!['auto', 'light', 'dark'].includes(saved)) saved = 'auto';
     const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    document.documentElement.dataset.theme = saved || (systemDark ? 'dark' : 'light');
+    document.documentElement.dataset.themePreference = saved;
+    document.documentElement.dataset.theme = saved === 'auto' ? (systemDark ? 'dark' : 'light') : saved;
   })();
 </script>
-<link rel="stylesheet" href="{{ "vendor/katex/katex.min.css" | relURL }}">
-{{ range slice "css/main.css" "css/preview.css" "css/research-refresh.css" }}
-<link rel="stylesheet" href="{{ . | relURL }}?v={{ readFile (printf "static/%s" .) | sha256 | truncate 12 "" }}">
+{{ $layers := slice (resources.FromString "css/layers/order.css" "@layer tokens, base, layout, components, utilities, print;\n") }}
+{{ $sourceContents := slice }}
+{{ range slice "tokens" "base" "layout" "components" "utilities" "print" }}
+  {{ $source := resources.Get (printf "css/%s.css" .) }}
+  {{ $layers = $layers | append $source }}
+  {{ $sourceContents = $sourceContents | append $source.Content }}
 {{ end }}
+{{ $bundleKey := delimit $sourceContents "" | sha256 | truncate 12 "" }}
+{{ $styles := $layers | resources.Concat (printf "css/site-%s.css" $bundleKey) | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}">
+{{ $hasMath := or .Params.math (gt (len (findRE `\$\$|\\\[|\\\(|\$[^$\s][^$\n]*\$` .RawContent)) 0) }}
+{{ if $hasMath }}
+<link rel="stylesheet" href="{{ "vendor/katex/katex.min.css" | relURL }}">
 <script defer src="{{ "vendor/katex/katex.min.js" | relURL }}"></script>
 <script defer src="{{ "vendor/katex/contrib/auto-render.min.js" | relURL }}"></script>
+{{ end }}
 <script defer src="{{ "js/main.js" | relURL }}?v={{ readFile "static/js/main.js" | sha256 | truncate 12 "" }}"></script>
 {{ if .IsHome }}
   <title>{{ .Site.Title }}</title>
 {{ else }}
-  <title>{{ .Title }} · {{ .Site.Params.authorName }}</title>
+  <title>{{ partial "page-title.html" . }} · {{ .Site.Params.authorName }}</title>
 {{ end }}

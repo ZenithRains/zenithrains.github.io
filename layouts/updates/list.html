@@ -1,8 +1,12 @@
 {{ define "main" }}
-<header class="page-header shell-narrow"><h1>{{ .Title }}</h1></header>
-<section class="shell-narrow content-section updates-feed" aria-label="{{ .Title }}">
-  {{ $pager := .Paginate .RegularPages.ByDate.Reverse }}
-  {{ range $pager.Pages }}{{ partial "update-card.html" . }}{{ end }}
-  {{ if gt $pager.TotalPages 1 }}<nav class="updates-pagination" aria-label="{{ if eq .Lang "zh" }}短讯分页{{ else }}Updates pagination{{ end }}">{{ if $pager.HasPrev }}<a href="{{ $pager.Prev.URL }}">{{ if eq .Lang "zh" }}较新{{ else }}Newer{{ end }}</a>{{ end }}{{ if $pager.HasNext }}<a href="{{ $pager.Next.URL }}">{{ if eq .Lang "zh" }}更早{{ else }}Older{{ end }}</a>{{ end }}</nav>{{ end }}
-</section>
+  <header class="page-header shell-narrow">
+    <h1>{{ .Title }}</h1>
+    <p class="page-lead">{{ if eq .Lang "zh" }}最近的阅读、想法与项目消息。{{ else }}Recent reading, thoughts, and project news.{{ end }}</p>
+    {{ with .Content }}<div class="page-description prose">{{ . }}</div>{{ end }}
+  </header>
+  <section class="shell-narrow content-section updates-feed" aria-label="{{ .Title }}">
+    {{ $pager := .Paginate .RegularPages.ByDate.Reverse }}
+    {{ range $pager.Pages }}{{ partial "update-card.html" (dict "page" . "headingLevel" 2) }}{{ end }}
+    {{ if gt $pager.TotalPages 1 }}<nav class="pagination updates-pagination" aria-label="{{ if eq .Lang "zh" }}动态分页{{ else }}Updates pagination{{ end }}">{{ if $pager.HasPrev }}<a href="{{ $pager.Prev.URL }}">← {{ if eq .Lang "zh" }}较新{{ else }}Newer{{ end }}</a>{{ end }}<span>{{ $pager.PageNumber }} / {{ $pager.TotalPages }}</span>{{ if $pager.HasNext }}<a href="{{ $pager.Next.URL }}">{{ if eq .Lang "zh" }}更早{{ else }}Older{{ end }} →</a>{{ end }}</nav>{{ end }}
+  </section>
 {{ end }}

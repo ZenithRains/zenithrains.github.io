@@ -1,7 +1,8 @@
 <footer class="site-footer">
   <div class="footer-inner">
-    <p>© {{ now.Year }} {{ .Site.Params.authorName }}</p>
+    <p class="footer-note">© {{ now.Year }} {{ .Site.Params.authorName }}</p>
     <div class="footer-links">
+      <a href="mailto:{{ .Site.Params.email }}">{{ if eq .Lang "zh" }}邮箱{{ else }}Email{{ end }}</a>
       <a href="{{ .Site.Params.github }}" rel="me">GitHub</a>
       {{ with .Site.Home.OutputFormats.Get "RSS" }}<a href="{{ .RelPermalink }}">RSS</a>{{ end }}
     </div>

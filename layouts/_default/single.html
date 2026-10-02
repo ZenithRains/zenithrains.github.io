@@ -1,5 +1,5 @@
 {{ define "main" }}
-  <article class="article-page shell-narrow">
+  <article class="article-page article-frame shell-narrow{{ if .Params.pdf }} document-page{{ end }}">
     <header class="article-header">
       {{ if or (eq .Section "notes") (eq .Section "essays") }}
         <div class="article-meta">
@@ -7,7 +7,7 @@
           {{ if not .Params.pdf }}{{ with .ReadingTime }}<span class="meta-divider">/</span><span>{{ . }} {{ if eq $.Lang "zh" }}分钟阅读{{ else }}min read{{ end }}</span>{{ end }}{{ end }}
         </div>
       {{ end }}
-      <h1>{{ .Title }}</h1>
+      <h1>{{ with .Params.titleWords }}{{ range . }}<span class="title-word">{{ . }}</span>{{ end }}{{ else }}{{ .Title }}{{ end }}</h1>
       {{ with .Description }}<p class="article-deck">{{ . }}</p>{{ end }}
       {{ with .Params.series }}
         <div class="series-line">

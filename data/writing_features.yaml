@@ -1,0 +1,51 @@
+features:
+  - id: euler-e65
+    page: /notes/2026/09/euler-e65/
+    date: 2026-09-20
+    kind: documents
+    media: euler-e65
+    title:
+      zh: Euler E65：拉丁文校录与重排
+      en: "Euler E65: Latin transcription and typesetting"
+    type:
+      zh: 文献整理
+      en: Transcription
+    authors:
+      zh: Leonhard Euler 著 · Ruiyi Zhang 整理
+      en: Leonhard Euler · Prepared by Ruiyi Zhang
+    description:
+      zh: 1744 年原作的完整拉丁文工作稿，212 页。保留原文疑点、校录说明与 49 幅矢量图。
+      en: A complete Latin working draft of Euler’s 1744 work, 212 pages, with transcription notes and 49 vector figures.
+  - id: science-and-hypothesis
+    url: https://mathtranslations.org/translations/132/
+    date: 2026-09-19
+    kind: documents
+    title:
+      zh: 科学与假设
+      en: Science and Hypothesis
+    type:
+      zh: 译作 · 数译
+      en: Chinese translation · MathTranslations
+    authors:
+      zh: Henri Poincaré 著 · Ruiyi Zhang 译
+      en: Henri Poincaré · Translated by Ruiyi Zhang
+    description:
+      zh: Henri Poincaré 关于数学、科学与认识的讨论。中文译稿在数译阅读。
+      en: Poincaré’s reflections on mathematics, science, and knowledge. Read the Chinese translation on MathTranslations.
+  - id: mount-fuji-unseen
+    page: /essays/2026/07/mount-fuji-unseen/
+    date: 2026-07-19
+    kind: essays
+    media: mount-fuji-unseen
+    title:
+      zh: 未见富士山
+      en: Mount Fuji, Unseen
+    type:
+      zh: 旅行图文集
+      en: Travel journal
+    authors:
+      zh: Ruiyi Zhang
+      en: Ruiyi Zhang
+    description:
+      zh: 2024 年日本旅行的图文记录，关于京都、诹访、东京，以及始终未见的富士山。
+      en: "An illustrated journal of Japan in 2024: Kyoto, Suwa, Tokyo, and the mountain that stayed out of sight."

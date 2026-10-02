@@ -1,7 +1,13 @@
 publications:
   - id: small-diffusivity
     page: /research/small-diffusivity/
-    shortTitle: 弱扩散下的质量集中
+    shortTitle:
+      zh: 弱扩散下的质量集中
+      en: Concentration under weak diffusion
+    state: submitted
+    statusLabel:
+      zh: 已投稿
+      en: Submitted
     year: 2026
     title: Small-Diffusivity Concentration for Fractional Aggregation with Cusp Attraction
     authors: Ruiyi Zhang, Xiaoxin Zheng
@@ -22,7 +28,13 @@ publications:
       en: How does attraction concentrate mass as diffusion weakens? My advisor, Xiaoxin Zheng, and I combine local mass estimates with nonlocal analysis to turn a scale balance into a concentration result under explicit assumptions.
   - id: nutrient-taxis
     page: /research/nutrient-taxis/
-    shortTitle: 双退化趋营养系统的长期行为
+    shortTitle:
+      zh: 双退化趋营养系统的长期行为
+      en: Long-time behavior with double degeneracy
+    state: in-progress
+    statusLabel:
+      zh: 手稿打磨中
+      en: In preparation
     year: 2026
     title: Time-Uniform Boundedness and Large-Time Behavior for a Planar Doubly Degenerate Nutrient-Taxis System
     authors: Ruiyi Zhang, Xiaoxin Zheng
@@ -43,7 +55,13 @@ publications:
       en: Diffusion weakens as population density or nutrient concentration approaches zero. My advisor, Xiaoxin Zheng, and I seek energy estimates that handle both degeneracies and describe boundedness and long-term evolution.
   - id: proof-or-obstruction
     year: 2026
-    shortTitle: PDE 能量估计的搜索与验证
+    shortTitle:
+      zh: PDE 能量估计的搜索与验证
+      en: Searching and verifying PDE energy estimates
+    state: manuscript
+    statusLabel:
+      zh: 研究手稿 v2
+      en: Research manuscript v2
     title: "Proof or Obstruction: Verifier-Guided Diagnosis of PDE Energy Estimates"
     authors: Ruiyi Zhang
     page: /notes/2026/07/proof-or-obstruction/

@@ -1,6 +1,11 @@
 {{ define "main" }}
-<header class="page-header shell"><h1>{{ .Title }}</h1></header>
-<section class="shell content-section publications-section">
-  {{ partial "research-list.html" . }}
-</section>
+  <header class="page-header shell">
+    <p class="eyebrow">{{ if eq .Lang "zh" }}问题、方法与进展{{ else }}Questions, methods & progress{{ end }}</p>
+    <h1>{{ .Title }}</h1>
+    <p class="page-lead">{{ if eq .Lang "zh" }}非线性偏微分方程的分析，以及数学推理的搜索与验证。{{ else }}Analysis of nonlinear PDEs, and the search and verification of mathematical arguments.{{ end }}</p>
+    {{ with .Content }}<div class="page-description prose">{{ . }}</div>{{ end }}
+  </header>
+  <section class="shell content-section publications-section">
+    {{ partial "research-list.html" . }}
+  </section>
 {{ end }}

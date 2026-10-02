@@ -5,7 +5,11 @@
 {{ if $pages }}
   <ol class="article-list">
     {{ range $pages }}
-      <li>
+      {{ $kind := .Params.writingKind }}
+      {{ if not $kind }}
+        {{ if eq .Section "essays" }}{{ $kind = "essays" }}{{ else if .Params.researchShowcase }}{{ $kind = "research" }}{{ else if .Params.pdf }}{{ $kind = "documents" }}{{ else }}{{ $kind = "research" }}{{ end }}
+      {{ end }}
+      <li data-writing-kind="{{ $kind }}">
         <article class="article-card">
           {{ printf "<%s class=\"article-card-title\">" $heading | safeHTML }}<a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ printf "</%s>" $heading | safeHTML }}
           <div class="article-meta">
@@ -13,7 +17,7 @@
             {{ if $showSection }}<span class="meta-divider">/</span><a class="meta-section" href="{{ .CurrentSection.RelPermalink }}">{{ .CurrentSection.Title }}</a>{{ end }}
             {{ with index .Params.series 0 }}<span class="meta-divider">/</span><a class="meta-series" href="{{ printf "/series/%s/" (. | urlize) | relLangURL }}">{{ . }}</a>{{ end }}
           </div>
-          {{ with .Description }}<p>{{ . }}</p>{{ else }}{{ with .Summary }}<p>{{ . | plainify | truncate 180 }}</p>{{ end }}{{ end }}
+          {{ with .Description }}<p class="article-card-summary">{{ . }}</p>{{ else }}{{ with .Summary }}<p class="article-card-summary">{{ . | plainify | truncate 180 }}</p>{{ end }}{{ end }}
           {{ with .Params.tags }}
             <ul class="inline-tags" aria-label="{{ if eq $lang "zh" }}标签{{ else }}Tags{{ end }}">
               {{ range . }}<li><a href="{{ printf "/tags/%s/" (. | urlize) | relLangURL }}">#{{ . }}</a></li>{{ end }}

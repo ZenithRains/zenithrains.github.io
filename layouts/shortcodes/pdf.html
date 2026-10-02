@@ -1,12 +1,43 @@
-{{ $src := .Get "src" }}
-{{ $title := .Get "title" | default "PDF document" }}
-<figure class="embedded-pdf">
-  <div class="pdf-actions">
-    <a class="button" href="{{ $src | relURL }}" download>{{ if eq .Page.Lang "zh" }}下载 PDF{{ else }}Download PDF{{ end }}</a>
-    <a class="text-link" href="{{ $src | relURL }}" target="_blank" rel="noopener">{{ if eq .Page.Lang "zh" }}新窗口打开{{ else }}Open in a new tab{{ end }} ↗</a>
+{{- $src := .Get "src" -}}
+{{- $title := .Get "title" | default "PDF document" -}}
+{{- $lang := .Page.Lang -}}
+{{- $zh := eq $lang "zh" -}}
+{{- $metadata := index hugo.Data.media.documents $src | default dict -}}
+{{- $mediaKey := .Get "media" | default $metadata.media -}}
+{{- $media := dict -}}
+{{- with $mediaKey }}{{ $media = index hugo.Data.media . | default dict }}{{ end -}}
+{{- with $media.localized }}{{ $media = index . $lang | default $media }}{{ end -}}
+{{- $previewID := printf "pdf-%s-%s-%d" $lang ($src | anchorize) .Ordinal -}}
+{{- $pages := .Get "pages" | default $metadata.pages -}}
+{{- $language := .Get "language" | default (index ($metadata.language | default dict) $lang) -}}
+{{- $version := .Get "version" | default $metadata.version -}}
+{{- if reflect.IsMap $version }}{{ $version = index $version $lang }}{{ end -}}
+{{- $headingLevel := 2 -}}
+{{- if or (eq .Page.Section "publications") .Page.Params.researchShowcase }}{{ $headingLevel = 3 }}{{ end -}}
+{{- $headingLevel = .Get "headingLevel" | default $headingLevel -}}
+<figure class="document-panel embedded-pdf" data-pdf-src="{{ $src | relURL }}" data-pdf-title="{{ $title }}">
+  <div class="document-summary">
+    {{ with $media.src }}
+      <img class="document-cover" src="{{ . | relURL }}"{{ with $media.srcset }} srcset="{{ . }}" sizes="(max-width: 639px) 112px, 160px"{{ end }} width="{{ $media.width }}" height="{{ $media.height }}" alt="{{ index $media.alt $lang }}" loading="lazy" decoding="async">
+    {{ end }}
+    <div class="document-information">
+      {{ printf "<h%v class=\"document-title\">" $headingLevel | safeHTML }}{{ $title }}{{ printf "</h%v>" $headingLevel | safeHTML }}
+      <ul class="document-meta meta-line" aria-label="{{ if $zh }}文件信息{{ else }}Document information{{ end }}">
+        <li>PDF</li>
+        {{ with $pages }}<li>{{ . }} {{ if $zh }}页{{ else }}pages{{ end }}</li>{{ end }}
+        {{ with $language }}<li>{{ . }}</li>{{ end }}
+        {{ with $metadata.size }}<li>{{ . }}</li>{{ end }}
+        {{ with $version }}<li>{{ . }}</li>{{ end }}
+      </ul>
+      <div class="document-actions pdf-actions">
+        <a class="button button-primary" href="{{ $src | relURL }}" download>{{ if $zh }}下载 PDF{{ else }}Download PDF{{ end }}</a>
+        <a class="text-link" href="{{ $src | relURL }}" target="_blank" rel="noopener">{{ if $zh }}新窗口打开{{ else }}Open in a new tab{{ end }} <span aria-hidden="true">↗</span></a>
+        <button class="button button-secondary" type="button" data-pdf-load data-pdf-load-label="{{ if $zh }}在线阅读{{ else }}Read online{{ end }}" data-pdf-close-label="{{ if $zh }}收起预览{{ else }}Hide preview{{ end }}" aria-expanded="false" aria-controls="{{ $previewID }}" hidden>{{ if $zh }}在线阅读{{ else }}Read online{{ end }}</button>
+      </div>
+      <p class="document-note">{{ if $zh }}点击在线阅读后加载完整文件。{{ else }}The full document loads when you choose Read online.{{ end }}</p>
+      {{ with $media.source }}<p class="document-source">{{ index . $lang }}</p>{{ end }}
+    </div>
   </div>
-  <object class="pdf-viewer" data="{{ $src | relURL }}#view=FitH" type="application/pdf" aria-label="{{ $title }}">
-    <p><a href="{{ $src | relURL }}">{{ if eq .Page.Lang "zh" }}下载 PDF{{ else }}Download the PDF{{ end }}</a></p>
-  </object>
-  {{ with .Get "caption" }}<figcaption>{{ . }}</figcaption>{{ end }}
+  <div class="document-preview" id="{{ $previewID }}" data-pdf-viewer hidden></div>
+  {{ with .Get "caption" }}<figcaption class="document-caption">{{ . }}</figcaption>{{ end }}
 </figure>

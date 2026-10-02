@@ -3,6 +3,8 @@ title: "Euler E65：拉丁文校录与重排"
 date: 2026-09-20
 slug: euler-e65
 translationKey: euler-e65
+writingKind: documents
+titleWords: ["Euler E65：", "拉丁文", "校录与重排"]
 description: "Leonhard Euler 1744 年原作，Ruiyi Zhang 整理。完整拉丁文工作稿，212 页。"
 tags: [文献整理, Euler, 变分法]
 pdf: /files/euler-e65-latin-working-draft.pdf

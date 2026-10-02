@@ -1,0 +1,46 @@
+@layer print {
+@media print {
+  :root, :root[data-theme="dark"] {
+    color-scheme: light;
+    --color-bg: var(--color-print-bg);
+    --color-surface: var(--color-print-bg);
+    --color-text: var(--color-print-text);
+    --color-text-muted: var(--color-print-text);
+    --color-accent: var(--color-print-text);
+    --color-border: var(--color-print-rule);
+    --color-control-border: var(--color-print-text);
+    --page-width: 100%;
+    --reading-width: 100%;
+    --page-gutter: 0px;
+    --text-body: 11pt;
+    --text-meta: 9pt;
+    --space-section: 24pt;
+    --space-entry: 12pt;
+  }
+  html { scrollbar-gutter: auto; }
+  body { display: block; min-height: 0; }
+  .site-header, .site-footer, .skip-link, .profile-actions, .profile-links, .filter-nav, .pagination, .updates-pagination, .keyword-explorer, .article-back-link, .document-preview, .pdf-frame, .pdf-viewer, .document-actions button, .toc { display: none !important; }
+  .page-header, .article-page, .profile-hero, .not-found { padding-block: 0; }
+  .home-section { margin-top: var(--space-section); }
+  .section-heading { margin-bottom: 12pt; }
+  .section-heading > a { display: none; }
+  .profile-grid { grid-template-columns: minmax(0, 1fr) 100pt; gap: 18pt; }
+  .profile-photo { width: 100pt; }
+  .profile-copy { display: block; }
+  .document-panel, .cv-panel { padding: 12pt; break-inside: avoid; }
+  .document-information { flex-basis: auto; }
+  .document-cover { width: 75pt; flex-basis: 75pt; }
+  .article-footer { margin-top: 18pt; }
+  a { color: var(--color-text); text-decoration-thickness: 0.5pt; }
+  h1, h2, h3, h4 { break-after: avoid; }
+  p, li { orphans: 3; widows: 3; }
+  .research-list > li, .home-feature-list > li, figure { break-inside: avoid; }
+  .prose pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+  .table-scroll, .katex-display { overflow: visible; }
+  .table-scroll table { min-width: 0; font-size: 9pt; }
+  .figure-wide { width: 100%; margin-inline: 0; }
+  .print-only { display: block; }
+  .archive-record details > code { display: block; }
+}
+
+}

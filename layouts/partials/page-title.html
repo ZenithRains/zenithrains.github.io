@@ -1,0 +1,6 @@
+{{- $title := .Title -}}
+{{- if and (eq .Kind "taxonomy") (eq .Lang "zh") -}}
+  {{- if eq .Data.Plural "tags" -}}{{- $title = "标签" -}}{{- end -}}
+  {{- if eq .Data.Plural "series" -}}{{- $title = "专题" -}}{{- end -}}
+{{- end -}}
+{{- return $title -}}

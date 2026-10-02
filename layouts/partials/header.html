@@ -4,15 +4,10 @@
       <span>{{ if eq .Lang "zh" }}张睿溢{{ else }}R. Zhang{{ end }}</span>
     </a>
 
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-      <span class="sr-only">{{ if eq .Lang "zh" }}打开导航{{ else }}Open navigation{{ end }}</span>
-      <span></span><span></span>
-    </button>
-
     <nav class="site-nav" id="site-nav" aria-label="{{ if eq .Lang "zh" }}主导航{{ else }}Primary navigation{{ end }}">
       <a href="{{ "/about/" | relLangURL }}"{{ if eq .RelPermalink ("/about/" | relLangURL) }} aria-current="page"{{ end }}>{{ if eq .Lang "zh" }}关于{{ else }}About{{ end }}</a>
-      <a href="{{ "/publications/" | relLangURL }}"{{ if eq .Section "publications" }} aria-current="{{ if .IsSection }}page{{ else }}location{{ end }}"{{ end }}>{{ if eq .Lang "zh" }}研究{{ else }}Research{{ end }}</a>
-      <a href="{{ "/writing/" | relLangURL }}"{{ if in (slice "writing" "notes" "essays") .Section }} aria-current="{{ if eq .Section "writing" }}page{{ else }}location{{ end }}"{{ end }}>{{ if eq .Lang "zh" }}写作{{ else }}Writing{{ end }}</a>
+      <a href="{{ "/publications/" | relLangURL }}"{{ if or (eq .Section "publications") .Params.researchShowcase }} aria-current="{{ if .IsSection }}page{{ else }}location{{ end }}"{{ end }}>{{ if eq .Lang "zh" }}研究{{ else }}Research{{ end }}</a>
+      <a href="{{ "/writing/" | relLangURL }}"{{ if and (in (slice "writing" "notes" "essays") .Section) (not .Params.researchShowcase) }} aria-current="{{ if eq .Section "writing" }}page{{ else }}location{{ end }}"{{ end }}>{{ if eq .Lang "zh" }}写作{{ else }}Writing{{ end }}</a>
       <a href="{{ "/updates/" | relLangURL }}"{{ if eq .Section "updates" }} aria-current="{{ if .IsSection }}page{{ else }}location{{ end }}"{{ end }}>{{ if eq .Lang "zh" }}动态{{ else }}Updates{{ end }}</a>
     </nav>
 
@@ -25,12 +20,19 @@
           {{ range where $currentPage.Translations "Language.Name" $otherLanguage.Name }}
             {{ $target = .RelPermalink }}
           {{ end }}
-          <a class="language-link" href="{{ $target }}" lang="{{ $otherLanguage.Name }}">{{ $otherLanguage.Label }}</a>
+          <a class="language-link" href="{{ $target }}" lang="{{ $otherLanguage.Name }}" hreflang="{{ $otherLanguage.Locale }}">{{ $otherLanguage.Label }}</a>
         {{ end }}
       {{ end }}
-      <button class="theme-toggle" type="button" aria-label="{{ if eq .Lang "zh" }}切换黑白主题{{ else }}Toggle black and white theme{{ end }}" title="{{ if eq .Lang "zh" }}切换黑白主题{{ else }}Toggle theme{{ end }}">
-        <span class="theme-icon" aria-hidden="true"></span>
-      </button>
+      <details class="theme-menu">
+        <summary class="theme-toggle" aria-label="{{ if eq .Lang "zh" }}选择配色主题{{ else }}Choose color theme{{ end }}" title="{{ if eq .Lang "zh" }}配色主题{{ else }}Color theme{{ end }}">
+          <span class="theme-icon" aria-hidden="true"></span>
+        </summary>
+        <div class="theme-options" role="group" aria-label="{{ if eq .Lang "zh" }}配色主题{{ else }}Color theme{{ end }}">
+          <button type="button" data-theme-preference="auto" aria-pressed="false">{{ if eq .Lang "zh" }}随系统{{ else }}System{{ end }}</button>
+          <button type="button" data-theme-preference="light" aria-pressed="false">{{ if eq .Lang "zh" }}浅色{{ else }}Light{{ end }}</button>
+          <button type="button" data-theme-preference="dark" aria-pressed="false">{{ if eq .Lang "zh" }}深色{{ else }}Dark{{ end }}</button>
+        </div>
+      </details>
     </div>
   </div>
 </header>

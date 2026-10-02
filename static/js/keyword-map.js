@@ -3,6 +3,8 @@
   const source = document.getElementById('keyword-data');
   if (!container || !source) return;
 
+  const initialize = () => {
+  if (container.querySelector('svg')) return;
   let data;
   try {
     data = JSON.parse(source.textContent);
@@ -13,11 +15,12 @@
   if (!data.nodes?.length) return;
 
   const namespace = 'http://www.w3.org/2000/svg';
-  const width = Math.max(container.clientWidth, 320);
+  const width = Math.max(container.clientWidth, 240);
   const height = container.clientHeight || 560;
   const svg = document.createElementNS(namespace, 'svg');
   svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-  svg.setAttribute('aria-hidden', 'true');
+  container.setAttribute('role', 'group');
+  svg.setAttribute('role', 'group');
   container.append(svg);
 
   const nodeByName = new Map();
@@ -47,13 +50,8 @@
     }
   });
 
-  if (!links.size && data.nodes.length > 1) {
-    data.nodes.forEach((node, index) => {
-      if (index) links.set(String(index), { source: data.nodes[index - 1], target: node });
-    });
-  }
-
   const linkLayer = document.createElementNS(namespace, 'g');
+  linkLayer.setAttribute('aria-hidden', 'true');
   const nodeLayer = document.createElementNS(namespace, 'g');
   svg.append(linkLayer, nodeLayer);
 
@@ -95,6 +93,7 @@
   };
 
   let dragging = null;
+  let suppressClick = false;
   nodeElements.forEach(({ anchor, node }) => {
     anchor.addEventListener('pointerdown', (event) => {
       dragging = { node, startX: event.clientX, startY: event.clientY, moved: false };
@@ -114,13 +113,23 @@
       render();
     });
     anchor.addEventListener('pointerup', (event) => {
-      if (dragging?.moved) event.preventDefault();
+      suppressClick = Boolean(dragging?.moved);
+      if (suppressClick) event.preventDefault();
       dragging = null;
     });
+    anchor.addEventListener('pointercancel', () => { dragging = null; suppressClick = false; });
     anchor.addEventListener('click', (event) => {
-      if (dragging?.moved) event.preventDefault();
+      if (suppressClick) event.preventDefault();
+      suppressClick = false;
     });
   });
 
   render();
+  };
+  const explorer = container.closest('[data-keyword-explorer]');
+  if (explorer && !explorer.open) {
+    explorer.addEventListener('toggle', () => { if (explorer.open) initialize(); });
+  } else {
+    initialize();
+  }
 })();

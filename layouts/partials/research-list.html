@@ -1,23 +1,27 @@
 <ul class="research-list">
-  {{ range $i, $work := hugo.Data.publications.publications }}
-    <li id="{{ .id }}"><article>
-      <div class="research-entry">
-      {{ if $.IsHome }}<h3><a href="{{ if .page }}{{ .page | relLangURL }}{{ else }}{{ "/publications/" | relLangURL }}#{{ .id }}{{ end }}">{{ if eq $.Lang "zh" }}{{ .shortTitle }}{{ else }}{{ .title }}{{ end }}</a></h3>{{ else }}<h2>{{ .title }}</h2>{{ end }}
-      {{ if $.IsHome }}
-      <p class="research-meta">{{ .authors }} <span aria-hidden="true">·</span> <span class="research-status">{{ if eq .id "small-diffusivity" }}{{ if eq $.Lang "zh" }}已投稿{{ else }}Submitted{{ end }}{{ else if eq .id "nutrient-taxis" }}{{ if eq $.Lang "zh" }}手稿打磨中{{ else }}Work in progress{{ end }}{{ else }}{{ if eq $.Lang "zh" }}研究手稿 v2{{ else }}Research manuscript v2{{ end }}{{ end }}</span></p>
-      {{ else }}
-      <p class="research-authors">{{ .authors }}</p>
-      <p class="research-status">{{ index .status $.Lang }}</p>
-      {{ end }}
-      {{ if $.IsHome }}<p class="research-summary">{{ index .summary $.Lang }}</p>{{ else }}
-      <dl class="research-facts">
-        <div><dt>{{ if eq $.Lang "zh" }}核心问题{{ else }}Question{{ end }}</dt><dd>{{ index .question $.Lang }}</dd></div>
-        <div><dt>{{ if eq $.Lang "zh" }}方法{{ else }}Methods{{ end }}</dt><dd>{{ index .methods $.Lang }}</dd></div>
-        <div><dt>{{ if eq $.Lang "zh" }}进展{{ else }}Progress{{ end }}</dt><dd>{{ index .result $.Lang }}</dd></div>
-      </dl>
-      {{ with .page }}<p><a href="{{ . | relLangURL }}">{{ if eq $.Lang "zh" }}研究说明与全文{{ else }}Research note and full text{{ end }}</a></p>{{ end }}
-      {{ end }}
-      </div>
-    </article></li>
+  {{ range hugo.Data.publications.publications }}
+    {{ $shortTitle := .title }}
+    {{ if reflect.IsMap .shortTitle }}{{ $shortTitle = index .shortTitle $.Lang }}{{ else if eq $.Lang "zh" }}{{ $shortTitle = .shortTitle | default .title }}{{ end }}
+    {{ $statusLabel := index .status $.Lang }}
+    {{ with .statusLabel }}{{ $statusLabel = index . $.Lang }}{{ end }}
+    {{ $url := printf "%s#%s" ("/publications/" | relLangURL) .id }}
+    {{ with .page }}{{ $url = . | relLangURL }}{{ end }}
+    <li id="{{ .id }}">
+      <article class="research-entry" data-state="{{ .state | default "manuscript" }}">
+        {{ if $.IsHome }}<h3><a href="{{ $url }}">{{ $shortTitle }}</a></h3>{{ else }}<h2><a href="{{ $url }}">{{ $shortTitle }}</a></h2><p class="research-formal-title" lang="en">{{ .title }}</p>{{ end }}
+        <p class="research-meta"><span class="research-authors">{{ .authors }}</span><span class="meta-divider" aria-hidden="true">·</span><span class="research-status">{{ $statusLabel }}</span></p>
+        {{ if $.IsHome }}
+          <p class="research-summary">{{ index .summary $.Lang }}</p>
+        {{ else }}
+          <p class="research-status-detail">{{ index .status $.Lang }}</p>
+          <dl class="research-facts">
+            <div><dt>{{ if eq $.Lang "zh" }}核心问题{{ else }}Question{{ end }}</dt><dd>{{ index .question $.Lang }}</dd></div>
+            <div><dt>{{ if eq $.Lang "zh" }}方法{{ else }}Methods{{ end }}</dt><dd>{{ index .methods $.Lang }}</dd></div>
+            <div><dt>{{ if eq $.Lang "zh" }}进展{{ else }}Progress{{ end }}</dt><dd>{{ index .result $.Lang }}</dd></div>
+          </dl>
+          {{ with .page }}<p class="research-read-link"><a href="{{ . | relLangURL }}">{{ if eq $.Lang "zh" }}研究说明与全文{{ else }}Research note and full text{{ end }} <span aria-hidden="true">→</span></a></p>{{ end }}
+        {{ end }}
+      </article>
+    </li>
   {{ end }}
 </ul>

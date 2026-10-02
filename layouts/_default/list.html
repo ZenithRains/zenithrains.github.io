@@ -1,6 +1,8 @@
 {{ define "main" }}
   <header class="page-header shell">
     <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="page-lead">{{ . }}</p>{{ end }}
+    {{ with .Content }}<div class="page-description prose">{{ . }}</div>{{ end }}
   </header>
   <section class="shell content-section">
     {{ partial "article-list.html" (dict "pages" .Paginator.Pages "lang" .Lang) }}
@@ -11,7 +13,7 @@
 {{ define "pagination" }}
   {{ with .Paginator }}
     {{ if gt .TotalPages 1 }}
-      <nav class="pagination" aria-label="Pagination">
+      <nav class="pagination" aria-label="{{ if eq $.Lang "zh" }}分页{{ else }}Pagination{{ end }}">
         {{ with .Prev }}<a href="{{ .URL }}">← {{ if eq $.Lang "zh" }}上一页{{ else }}Previous{{ end }}</a>{{ end }}
         <span>{{ .PageNumber }} / {{ .TotalPages }}</span>
         {{ with .Next }}<a href="{{ .URL }}">{{ if eq $.Lang "zh" }}下一页{{ else }}Next{{ end }} →</a>{{ end }}

@@ -1,10 +1,19 @@
 {{ define "main" }}
   <header class="page-header shell">
-    <p class="eyebrow">{{ if eq .Lang "zh" }}标签{{ else }}Tagged{{ end }}</p>
+    <p class="eyebrow">{{ if eq .Data.Plural "series" }}{{ if eq .Lang "zh" }}专题{{ else }}Series{{ end }}{{ else }}{{ if eq .Lang "zh" }}标签{{ else }}Tagged{{ end }}{{ end }}</p>
     <h1>{{ .Title }}</h1>
     <p class="page-lead">{{ len .Pages }} {{ if eq .Lang "zh" }}篇内容{{ else }}items{{ end }}</p>
   </header>
   <section class="shell content-section">
     {{ partial "article-list.html" (dict "pages" .Paginator.Pages "lang" .Lang) }}
+    {{ with .Paginator }}
+      {{ if gt .TotalPages 1 }}
+        <nav class="pagination" aria-label="{{ if eq $.Lang "zh" }}分页{{ else }}Pagination{{ end }}">
+          {{ with .Prev }}<a href="{{ .URL }}">← {{ if eq $.Lang "zh" }}上一页{{ else }}Previous{{ end }}</a>{{ end }}
+          <span>{{ .PageNumber }} / {{ .TotalPages }}</span>
+          {{ with .Next }}<a href="{{ .URL }}">{{ if eq $.Lang "zh" }}下一页{{ else }}Next{{ end }} →</a>{{ end }}
+        </nav>
+      {{ end }}
+    {{ end }}
   </section>
 {{ end }}

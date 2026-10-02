@@ -2,7 +2,7 @@
 title: "Mount Fuji, Unseen: Japan Travel Journal, 2024"
 date: 2026-07-19
 slug: mount-fuji-unseen
-description: "An illustrated travel journal from Japan in 2024. English-language PDF, 34 pages, about 41 MB."
+description: "An illustrated travel journal from Japan in 2024. English-language PDF, 34 pages, about 43 MB."
 translationKey: mount-fuji-unseen
 tags:
   - Travel

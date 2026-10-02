@@ -3,6 +3,7 @@ title: "Euler E65: Latin transcription and typesetting"
 date: 2026-09-20
 slug: euler-e65
 translationKey: euler-e65
+writingKind: documents
 description: "Leonhard Euler’s 1744 work, prepared by Ruiyi Zhang. Complete Latin working draft, 212 pages."
 tags: [Text preparation, Euler, Calculus of variations]
 pdf: /files/euler-e65-latin-working-draft.pdf

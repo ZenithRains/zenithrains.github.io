@@ -1,0 +1,130 @@
+@layer tokens {
+/* Color, type, space and responsive roles have a single owner in this file. */
+:root {
+  color-scheme: light;
+  --color-bg: #f7f6f2;
+  --color-surface: #ffffff;
+  --color-text: #242722;
+  --color-text-muted: #62675f;
+  --color-accent: #425f7a;
+  --color-accent-soft: #e9eff3;
+  --color-border: #daddd4;
+  --color-control-border: #788174;
+  --color-on-accent: var(--color-surface);
+  --color-print-bg: #ffffff;
+  --color-print-text: #000000;
+  --color-print-rule: #cccccc;
+
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-display: "EB Garamond", Georgia, "Times New Roman", serif;
+  --font-code: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --font-display-weight: 550;
+  --font-title-weight: 550;
+  --font-body-weight: 400;
+  --font-label-weight: 500;
+  --font-strong-weight: 650;
+
+  --text-name: 2.75rem;
+  --text-title: 2.25rem;
+  --text-section: 1.5rem;
+  --text-entry: 1.375rem;
+  --text-subheading: 1.25rem;
+  --text-body: 1.125rem;
+  --text-ui: 1rem;
+  --text-meta: 0.875rem;
+  --text-code: 0.875rem;
+  --line-body: 1.7;
+  --line-title: 1.2;
+  --line-entry: 1.35;
+  --line-meta: 1.6;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+  --space-section: var(--space-16);
+  --space-entry: var(--space-8);
+  --space-heading: var(--space-6);
+  --space-paragraph: 1.1em;
+  --page-gutter: var(--space-8);
+  --page-width: 61.25rem;
+  --reading-width: 68ch;
+  --figure-width: 65rem;
+  --portrait-width: 15rem;
+  --feature-width: 10.5rem;
+  --document-cover-width: 10rem;
+  --radius: 0.25rem;
+  --rule-width: 1px;
+  --control-min: 2.75rem;
+  --duration-fast: 120ms;
+  --duration-normal: 180ms;
+  --motion-ease: ease-out;
+  --focus-width: 2px;
+  --focus-offset: 4px;
+
+  /* Graph code uses these aliases. They always resolve to the semantic palette. */
+  --bg: var(--color-bg);
+  --surface: var(--color-surface);
+  --ink: var(--color-text);
+  --muted: var(--color-text-muted);
+  --line: var(--color-border);
+  --accent: var(--color-accent);
+  --inverse: var(--color-bg);
+}
+
+:root:lang(zh) {
+  --font-display: "EB Garamond", "Noto Serif SC Titles", "Songti SC", "STSong", "SimSun", serif;
+  --font-display-weight: 500;
+  --font-title-weight: 500;
+  --reading-width: 36em;
+  --line-body: 1.85;
+  --line-title: 1.4;
+  --line-entry: 1.55;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #181c1a;
+  --color-surface: #212722;
+  --color-text: #eceee8;
+  --color-text-muted: #b0b8ac;
+  --color-accent: #abc7df;
+  --color-accent-soft: #273848;
+  --color-border: #3d473f;
+  --color-control-border: #798675;
+  --color-on-accent: var(--color-bg);
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  :root {
+    --page-gutter: var(--space-6);
+    --portrait-width: 12rem;
+    --feature-width: 9rem;
+  }
+}
+
+@media (max-width: 639px) {
+  :root {
+    --text-name: 2rem;
+    --text-title: 1.875rem;
+    --text-section: 1.375rem;
+    --text-entry: 1.25rem;
+    --text-subheading: 1.125rem;
+    --text-body: 1.0625rem;
+    --page-gutter: var(--space-5);
+    --space-section: 2.5rem;
+    --space-heading: var(--space-5);
+    --space-entry: var(--space-6);
+    --portrait-width: 7rem;
+    --feature-width: 6.5rem;
+    --document-cover-width: 7rem;
+  }
+}
+
+}

@@ -1,3 +1,14 @@
 {{ define "main" }}
-<section class="shell-narrow update-detail"><h1 class="sr-only">{{ .Title }}</h1><p><a href="{{ "/updates/" | relLangURL }}">← {{ if eq .Lang "zh" }}动态{{ else }}Updates{{ end }}</a></p><div class="updates-feed">{{ partial "update-card.html" . }}</div></section>
+  <article class="article-page article-frame shell-narrow update-detail">
+    <p class="article-back-link"><a href="{{ "/updates/" | relLangURL }}">← {{ if eq .Lang "zh" }}全部动态{{ else }}All updates{{ end }}</a></p>
+    <header class="article-header">
+      <p class="article-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ if eq .Lang "zh" }}{{ .Date.Format "2006 年 1 月 2 日" }}{{ else }}{{ .Date.Format "2 January 2006" }}{{ end }}</time></p>
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}<p class="article-deck">{{ . }}</p>{{ end }}
+    </header>
+    <div class="article-body prose">{{ .Content }}</div>
+    {{ with .Params.external }}
+      <a class="update-link-card" href="{{ . }}" target="_blank" rel="noopener noreferrer"><span class="update-link-host">{{ (urls.Parse .).Host }} <span aria-hidden="true">↗</span></span><strong>{{ $.Params.linkTitle }}</strong>{{ with $.Params.linkDescription }}<span>{{ . }}</span>{{ end }}</a>
+    {{ end }}
+  </article>
 {{ end }}
