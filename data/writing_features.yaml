@@ -36,16 +36,12 @@ features:
     page: /essays/2026/07/mount-fuji-unseen/
     date: 2026-07-19
     kind: essays
-    media: mount-fuji-unseen
     title:
-      zh: 未见富士山
-      en: Mount Fuji, Unseen
+      zh: ふみ富士
+      en: ふみ富士
     type:
-      zh: 旅行图文集
+      zh: 游记
       en: Travel journal
-    authors:
-      zh: Ruiyi Zhang
-      en: Ruiyi Zhang
     description:
-      zh: 2024 年日本旅行的图文记录，关于京都、诹访、东京，以及始终未见的富士山。
-      en: "An illustrated journal of Japan in 2024: Kyoto, Suwa, Tokyo, and the mountain that stayed out of sight."
+      zh: 在 Notion 阅读全文。
+      en: Read on Notion (Chinese).

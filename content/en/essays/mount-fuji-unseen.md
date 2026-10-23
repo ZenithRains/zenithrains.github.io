@@ -1,18 +1,11 @@
 ---
-title: "Mount Fuji, Unseen: Japan Travel Journal, 2024"
+title: "ふみ富士"
 date: 2026-07-19
 slug: mount-fuji-unseen
-description: "An illustrated travel journal from Japan in 2024. English-language PDF, 34 pages, about 43 MB."
 translationKey: mount-fuji-unseen
-tags:
-  - Travel
-  - Japan
-  - Kyoto
-  - Suwa
-  - Tokyo
+externalReading: true
 math: false
 draft: false
-pdf: /files/japan-travel-2024-en.pdf
 ---
 
-{{< pdf src="/files/japan-travel-2024-en.pdf" title="Fuji, Unseen: A Journey Through Japan, 2024" >}}
+[Read on Notion (Chinese)](https://app.notion.com/p/4025f496604380dfb8bac8d2d193e8c2)
